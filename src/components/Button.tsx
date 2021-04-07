@@ -74,7 +74,7 @@ export const Button: React.FC<ButtonProps> = ({
   primary = false,
   size = 'medium',
   backgroundColor,
-  label
+  label,
 }) => {
   return (
     <StyledButton
