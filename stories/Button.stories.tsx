@@ -60,7 +60,8 @@ FullWidth.args = {
 
 export const Outlined = Template.bind({});
 Outlined.args = {
-  variant: 'outlined',
-  label: 'ADD TO FAVORITE',
+  label: 'ADD TO MY FAVORITE',
+  color: 'primary',
+  variant: 'outlined'
 };
 

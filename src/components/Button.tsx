@@ -12,11 +12,23 @@ export interface ButtonProps {
   disabled?: boolean;
 }
 
+const outlinedPrimary = css`
+  color: ${theme.palette.primary.dark};
+  background-color: transparent;
+  border: 1px solid ${theme.palette.primary.light};
+  &:hover {
+    border: 1px solid ${theme.palette.primary.dark};
+    background-color: ${theme.palette.primary[400]};
+    opacity: 0.6;
+  }
+`;
+
 const StyledButton = styled.button<ButtonProps>`
   font-family: ${theme.typography.button.fontFamily};
   font-weight: ${theme.typography.button.fontWeight};
   font-size: ${theme.typography.button.fontSize};
-  border: none;
+  border-style: none;
+  outline: 0;
   border-radius: ${theme.borderRadius.default};
   cursor: pointer;
   display: inline-block;
@@ -27,6 +39,7 @@ const StyledButton = styled.button<ButtonProps>`
   letter-spacing: ${theme.typography.button.letterSpacing};
     ${props =>
       props.color === 'primary' &&
+      props.variant === 'filled' &&
       css`
         background-color: ${theme.palette.primary.main};
         color: ${theme.palette.primary.contrastText};
@@ -49,23 +62,28 @@ const StyledButton = styled.button<ButtonProps>`
         padding: 8px 14px;
         font-size: ${theme.typography.remSize(15)};
       `};
-  ${props =>
-    props.variant === 'outlined' &&
-    css`
-      padding: 5px 45px;
-      border: 1px solid red ;
-    `};
-  ${props =>
-    props.fullWidth &&
-    css`
-      width: 100%;
-    `};
-  ${props =>
-    props.disabled &&
-    css`
-      background-color: #dddddd;
-      color: #9095a8;
-    `};
+    ${props =>
+      props.variant === 'filled' &&
+      props.size === 'small' &&
+      css`
+        padding: 5px 45px;
+        background-color: ${theme.palette.primary.main};
+      `};
+    ${props =>
+      props.fullWidth &&
+      css`
+        width: 100%;
+      `};
+    ${props =>
+      props.disabled &&
+      css`
+        background-color: #dddddd;
+        color: #9095a8;
+      `};
+    ${props =>
+      props.variant === 'outlined' &&
+      props.color === 'primary' &&
+      outlinedPrimary};
 `;
 
 export const Button: React.FC<ButtonProps> = ({
@@ -74,6 +92,7 @@ export const Button: React.FC<ButtonProps> = ({
   size = 'medium',
   label,
   disabled = false,
+  variant = 'filled',
 }) => {
   return (
     <StyledButton
@@ -82,6 +101,7 @@ export const Button: React.FC<ButtonProps> = ({
       label={label}
       fullWidth={fullWidth}
       disabled={disabled}
+      variant={variant}
     >
       {label}
     </StyledButton>

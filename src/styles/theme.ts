@@ -8,6 +8,7 @@ const palette = {
     main: '#8fdecb',
     dark: '#8FDDCA',
     contrastText: '#4C4F5A',
+    400: '#EDF7F6'
   },
   secondary: {
     light: '#FEFCDD',
