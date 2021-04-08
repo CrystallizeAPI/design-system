@@ -55,6 +55,12 @@ FullWidth.args = {
   size: 'medium',
   label: 'ADD TO FAVORITE',
   fullWidth: true,
-  color: 'primary'
+  color: 'primary',
+};
+
+export const Outlined = Template.bind({});
+Outlined.args = {
+  variant: 'outlined',
+  label: 'ADD TO FAVORITE',
 };
 
