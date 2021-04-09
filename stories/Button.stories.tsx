@@ -11,57 +11,113 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ButtonProps> = args => <Button {...args} />;
+const Template: Story<ButtonProps> = args => {
+  return (
+    <div
+      style={{
+        background: 'rgba(0, 0, 0, 0.04)',
+        width: '100%',
+        height: '20vh',
+        display: 'inline-block',
+        padding: '10px',
+      }}
+    >
+      <Button {...args} />
+    </div>
+  );
+};
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const PrimaryTextButton = Template.bind({});
+PrimaryTextButton.args = {
   color: 'primary',
   label: 'Create a document',
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
+export const SecondaryTextButton = Template.bind({});
+SecondaryTextButton.args = {
   label: 'Create a product',
-  color: 'secondary'
+  color: 'secondary',
 };
 
-export const Default = Template.bind({});
-Default.args = {
-  label: 'Add description',
-  color: 'default'
+export const DefaultTextButton = Template.bind({});
+DefaultTextButton.args = {
+  label: '+ Add description',
 };
 
-export const Large = Template.bind({});
-Large.args = {
+export const LargeSecondaryText = Template.bind({});
+LargeSecondaryText.args = {
   size: 'large',
-  label: 'Create a shape',
+  label: 'Large button',
+  color: 'secondary',
 };
 
-export const Small = Template.bind({});
-Small.args = {
+export const SmallButton = Template.bind({});
+SmallButton.args = {
   size: 'small',
   label: '+ Create webhook',
+  variant: 'filled',
+  color: 'secondary',
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
+export const DisabledButton = Template.bind({});
+DisabledButton.args = {
   size: 'small',
-  label: '+ Create webhook',
-  disabled: true
+  label: 'Disabled',
+  disabled: true,
 };
 
-export const FullWidth = Template.bind({});
-FullWidth.args = {
+export const FullWidthButton = Template.bind({});
+FullWidthButton.args = {
   size: 'medium',
-  label: 'ADD TO FAVORITE',
+  label: 'Full Width',
   fullWidth: true,
   color: 'primary',
+  variant: 'filled',
 };
 
-export const Outlined = Template.bind({});
-Outlined.args = {
-  label: 'ADD TO MY FAVORITE',
+export const OutlinedDefault = Template.bind({});
+OutlinedDefault.args = {
+  label: 'Outlined',
+  variant: 'outlined',
+};
+
+export const Filled = Template.bind({});
+Filled.args = {
+  label: 'Filled Default',
+  variant: 'filled',
+};
+
+export const FilledPrimary = Template.bind({});
+FilledPrimary.args = {
+  label: 'Filled Primary',
+  variant: 'filled',
   color: 'primary',
-  variant: 'outlined'
 };
 
+export const FilledSecondary = Template.bind({});
+FilledSecondary.args = {
+  label: 'Filled Secondary',
+  variant: 'filled',
+  color: 'secondary',
+};
+
+export const OutlinedPrimary = Template.bind({});
+OutlinedPrimary.args = {
+  label: 'Outlined Primary',
+  color: 'primary',
+  variant: 'outlined',
+};
+
+export const OutlinedSecondary = Template.bind({});
+OutlinedSecondary.args = {
+  label: 'Outlined Secondary',
+  color: 'secondary',
+  variant: 'outlined',
+};
+
+export const OutlinedDisabled = Template.bind({});
+OutlinedDisabled.args = {
+  label: 'Outlined Secondary Button',
+  variant: 'outlined',
+  disabled: true,
+};

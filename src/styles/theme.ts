@@ -13,7 +13,7 @@ const palette = {
   secondary: {
     light: '#FEFCDD',
     main: '#FFEFD2',
-    dark: '#FEFCDD',
+    dark: '#ccbda1',
     contrastText: '#4C4F5A',
   },
   error: {
@@ -27,6 +27,11 @@ const palette = {
     secondary: 'rgba(0, 0, 0, 0.54)',
     disabled: 'rgba(0, 0, 0, 0.38)',
     hint: 'rgba(0, 0, 0, 0.38)',
+  },
+  action: {
+    disabled: 'rgba(0, 0, 0, 0.26)',
+    hover: 'rgba(0, 0, 0, 0.04)',
+    disabledBackground: 'rgba(0, 0, 0, 0.05)',
   },
 };
 
@@ -70,10 +75,16 @@ const typography = {
   },
 };
 
+const easing = {
+  easeOut: 'cubic-bezier(0.0, 0, 0.2, 1)',
+  easeIn: 'cubic-bezier(0.4, 0, 1, 1)',
+};
+
 export const theme = {
   type: 'light',
   palette: palette,
   spacing: spacing,
   borderRadius: borderRadius,
   typography: typography,
+  easing: easing,
 };

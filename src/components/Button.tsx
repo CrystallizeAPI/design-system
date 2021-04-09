@@ -19,7 +19,72 @@ const outlinedPrimary = css`
   &:hover {
     border: 1px solid ${theme.palette.primary.dark};
     background-color: ${theme.palette.primary[400]};
-    opacity: 0.6;
+  }
+  &:active {
+    box-shadow: 0px 5px 6px -3px rgba(0, 0, 0, 0.2),
+      0px 9px 12px 1px rgba(0, 0, 0, 0.14), 0px 3px 16px 2px rgba(0, 0, 0, 0.12);
+  }
+`;
+
+const outlinedSecondary = css`
+  color: ${theme.palette.secondary.dark};
+  background-color: transparent;
+  border: 2px solid ${theme.palette.secondary.main};
+  &:hover {
+    border: 1px solid ${theme.palette.secondary.main};
+    background-color: ${theme.palette.secondary.light};
+  }
+  &:active {
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  }
+  &:disabled {
+    border: 1px solid ${theme.palette.action.disabled};
+    background-color: ${theme.palette.action.disabledBackground};
+    color: ${theme.palette.text.disabled};
+  }
+`;
+
+const outlined = css`
+  color: ${theme.palette.text.primary};
+  padding: 5px 15px;
+  border: 0.4px solid ${theme.palette.text.secondary};
+  border-radius: ${theme.borderRadius.default};
+  &:disabled {
+    border: 1px solid ${theme.palette.action.disabled};
+  }
+`;
+
+const filled = css`
+  background-color: ${theme.palette.common.white};
+  color: ${theme.palette.primary.contrastText};
+  border-radius: ${theme.borderRadius.default};
+  &:disabled {
+    background-color: 1px solid ${theme.palette.action.disabled};
+  }
+  &:hover {
+    background-color: ${theme.palette.action.hover};
+  }
+  &:active {
+    background-color: ${theme.palette.action.hover};
+  }
+`;
+
+const filledPrimary = css`
+  background-color: ${theme.palette.primary.main};
+  color: ${theme.palette.primary.contrastText};
+  border-radius: ${theme.borderRadius.default};
+  &:hover {
+    background-color: ${theme.palette.primary.dark};
+  }
+`;
+
+const filledSecondary = css`
+  background-color: ${theme.palette.secondary.main};
+  color: ${theme.palette.secondary.contrastText};
+  border-radius: ${theme.borderRadius.default};
+  &:hover {
+    background-color: ${theme.palette.secondary.dark};
   }
 `;
 
@@ -29,7 +94,6 @@ const StyledButton = styled.button<ButtonProps>`
   font-size: ${theme.typography.button.fontSize};
   border-style: none;
   outline: 0;
-  border-radius: ${theme.borderRadius.default};
   cursor: pointer;
   display: inline-block;
   padding: 6px 16px;
@@ -37,38 +101,43 @@ const StyledButton = styled.button<ButtonProps>`
   color: ${theme.palette.text.primary};
   text-transform: ${theme.typography.button.textTransform};
   letter-spacing: ${theme.typography.button.letterSpacing};
+  background-color: transparent;
+    
+      /* color=primary and variant=text*/
     ${props =>
       props.color === 'primary' &&
-      props.variant === 'filled' &&
       css`
-        background-color: ${theme.palette.primary.main};
-        color: ${theme.palette.primary.contrastText};
+        color: ${theme.palette.primary.main};
       `}
+
+      /* color=secondary and variant=text*/
     ${props =>
       props.color === 'secondary' &&
       css`
-        background-color: ${theme.palette.secondary.main};
-        color: ${theme.palette.primary.contrastText};
+        color: ${theme.palette.secondary.dark};
       `}
+      
+      /* size=small*/
     ${props =>
       props.size === 'small' &&
       css`
         padding: 6px 12px;
         font-size: ${theme.typography.remSize(13)};
       `}
+      
+      /* size=large*/
     ${props =>
       props.size === 'large' &&
       css`
         padding: 8px 14px;
         font-size: ${theme.typography.remSize(15)};
       `};
-    ${props =>
-      props.variant === 'filled' &&
-      props.size === 'small' &&
-      css`
-        padding: 5px 45px;
-        background-color: ${theme.palette.primary.main};
-      `};
+
+      /*variant=outlined*/
+    ${props => props.variant === 'outlined' && outlined};
+  
+    /*variant=filled*/
+    ${props => props.variant === 'filled' && filled};   
     ${props =>
       props.fullWidth &&
       css`
@@ -77,13 +146,25 @@ const StyledButton = styled.button<ButtonProps>`
     ${props =>
       props.disabled &&
       css`
-        background-color: #dddddd;
-        color: #9095a8;
+        background-color: ${theme.palette.action.disabledBackground};
+        color: ${theme.palette.text.disabled};
+        border-radius: ${theme.borderRadius.default};
       `};
     ${props =>
       props.variant === 'outlined' &&
       props.color === 'primary' &&
-      outlinedPrimary};
+      outlinedPrimary}; 
+    ${props =>
+      props.variant === 'outlined' &&
+      props.color === 'secondary' &&
+      outlinedSecondary};
+    ${props =>
+      props.variant === 'filled' && props.color === 'primary' && filledPrimary};
+  ${props =>
+    props.variant === 'filled' &&
+    props.color === 'secondary' &&
+    filledSecondary};
+
 `;
 
 export const Button: React.FC<ButtonProps> = ({
@@ -92,7 +173,7 @@ export const Button: React.FC<ButtonProps> = ({
   size = 'medium',
   label,
   disabled = false,
-  variant = 'filled',
+  variant = 'text',
 }) => {
   return (
     <StyledButton
