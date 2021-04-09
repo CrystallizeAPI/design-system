@@ -32,6 +32,7 @@ jobs:
         run: yarn build
 
   publish_stories:
+    needs: build
     name: Publish stories to Chromatic
     runs-on: ubuntu-latest
     steps:
