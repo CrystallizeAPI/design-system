@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-
+import { action } from '@storybook/addon-actions';
 import { Button, ButtonProps } from '../src';
 
 export default {
@@ -22,7 +22,7 @@ const Template: Story<ButtonProps> = args => {
         padding: '10px',
       }}
     >
-      <Button {...args} />
+      <Button {...args} onClick={action('Clicked')} />
     </div>
   );
 };
@@ -30,7 +30,7 @@ const Template: Story<ButtonProps> = args => {
 export const PrimaryTextButton = Template.bind({});
 PrimaryTextButton.args = {
   color: 'primary',
-  label: 'Create a document',
+  label: 'CREATE A DOCUMENT',
 };
 
 export const SecondaryTextButton = Template.bind({});
@@ -44,25 +44,24 @@ DefaultTextButton.args = {
   label: '+ Add description',
 };
 
-export const LargeSecondaryText = Template.bind({});
-LargeSecondaryText.args = {
+export const LargeText = Template.bind({});
+LargeText.args = {
   size: 'large',
-  label: 'Large button',
+  label: 'Large text',
   color: 'secondary',
 };
 
-export const SmallButton = Template.bind({});
-SmallButton.args = {
+export const SmallText = Template.bind({});
+SmallText.args = {
   size: 'small',
-  label: '+ Create webhook',
-  variant: 'filled',
+  label: 'Small text',
   color: 'secondary',
 };
 
 export const DisabledButton = Template.bind({});
 DisabledButton.args = {
   size: 'small',
-  label: 'Disabled',
+  label: 'I am Disabled',
   disabled: true,
 };
 
@@ -81,8 +80,8 @@ OutlinedDefault.args = {
   variant: 'outlined',
 };
 
-export const Filled = Template.bind({});
-Filled.args = {
+export const FilledDefault = Template.bind({});
+FilledDefault.args = {
   label: 'Filled Default',
   variant: 'filled',
 };
@@ -94,9 +93,25 @@ FilledPrimary.args = {
   color: 'primary',
 };
 
-export const FilledSecondary = Template.bind({});
-FilledSecondary.args = {
+export const FilledSecondaryMedium = Template.bind({});
+FilledSecondaryMedium.args = {
   label: 'Filled Secondary',
+  variant: 'filled',
+  color: 'secondary',
+};
+
+export const FilledSecondarySmall = Template.bind({});
+FilledSecondarySmall.args = {
+  size: 'small',
+  label: '+ Create webhook',
+  variant: 'filled',
+  color: 'secondary',
+};
+
+export const FilledSecondaryLarge = Template.bind({});
+FilledSecondaryLarge.args = {
+  size: 'large',
+  label: '+ Create webhook',
   variant: 'filled',
   color: 'secondary',
 };
@@ -117,7 +132,7 @@ OutlinedSecondary.args = {
 
 export const OutlinedDisabled = Template.bind({});
 OutlinedDisabled.args = {
-  label: 'Outlined Secondary Button',
+  label: 'Outlined Disabled',
   variant: 'outlined',
   disabled: true,
 };

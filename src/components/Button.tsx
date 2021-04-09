@@ -12,39 +12,6 @@ export interface ButtonProps {
   disabled?: boolean;
 }
 
-const outlinedPrimary = css`
-  color: ${theme.palette.primary.dark};
-  background-color: transparent;
-  border: 1px solid ${theme.palette.primary.light};
-  &:hover {
-    border: 1px solid ${theme.palette.primary.dark};
-    background-color: ${theme.palette.primary[400]};
-  }
-  &:active {
-    box-shadow: 0px 5px 6px -3px rgba(0, 0, 0, 0.2),
-      0px 9px 12px 1px rgba(0, 0, 0, 0.14), 0px 3px 16px 2px rgba(0, 0, 0, 0.12);
-  }
-`;
-
-const outlinedSecondary = css`
-  color: ${theme.palette.secondary.dark};
-  background-color: transparent;
-  border: 2px solid ${theme.palette.secondary.main};
-  &:hover {
-    border: 1px solid ${theme.palette.secondary.main};
-    background-color: ${theme.palette.secondary.light};
-  }
-  &:active {
-    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
-      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-  }
-  &:disabled {
-    border: 1px solid ${theme.palette.action.disabled};
-    background-color: ${theme.palette.action.disabledBackground};
-    color: ${theme.palette.text.disabled};
-  }
-`;
-
 const outlined = css`
   color: ${theme.palette.text.primary};
   padding: 5px 15px;
@@ -55,18 +22,58 @@ const outlined = css`
   }
 `;
 
+const outlinedPrimary = css`
+  color: ${theme.palette.primary[600]};
+  background-color: transparent;
+  border: 1px solid ${theme.palette.primary[600]};
+  &:hover {
+    border: 1px solid ${theme.palette.primary.dark};
+    background-color: ${theme.palette.primary[400]};
+  }
+  &:active {
+    box-shadow: ${theme.shadows[5]};
+  }
+  &:disabled {
+    border: 1px solid ${theme.palette.action.disabled};
+    color: ${theme.palette.text.disabled};
+  }
+`;
+
+const outlinedSecondary = css`
+  color: ${theme.palette.secondary.dark};
+  background-color: transparent;
+  border: 1px solid ${theme.palette.secondary.dark};
+  &:hover {
+    background-color: ${theme.palette.secondary[400]};
+  }
+  &:active {
+    box-shadow: ${theme.shadows[2]};
+  }
+  &:disabled {
+    border: 1px solid ${theme.palette.action.disabled};
+    color: ${theme.palette.text.disabled};
+  }
+`;
+
 const filled = css`
   background-color: ${theme.palette.common.white};
   color: ${theme.palette.primary.contrastText};
   border-radius: ${theme.borderRadius.default};
+  box-shadow: ${theme.shadows[2]};
   &:disabled {
     background-color: 1px solid ${theme.palette.action.disabled};
+    color: ${theme.palette.text.disabled};
+    box-shadow: ${theme.shadows[0]};
   }
   &:hover {
     background-color: ${theme.palette.action.hover};
+    box-shadow: ${theme.shadows[4]};
   }
   &:active {
-    background-color: ${theme.palette.action.hover};
+    box-shadow: ${theme.shadows[8]};
+  }
+  &:focus-visible {
+    box-shadow: ${theme.shadows[6]};
   }
 `;
 
@@ -107,7 +114,10 @@ const StyledButton = styled.button<ButtonProps>`
     ${props =>
       props.color === 'primary' &&
       css`
-        color: ${theme.palette.primary.main};
+        color: ${theme.palette.primary[600]};
+        &:hover {
+          background-color: ${theme.palette.primary[400]};
+        }
       `}
 
       /* color=secondary and variant=text*/
@@ -115,6 +125,9 @@ const StyledButton = styled.button<ButtonProps>`
       props.color === 'secondary' &&
       css`
         color: ${theme.palette.secondary.dark};
+        &:hover {
+          background-color: ${theme.palette.secondary[400]};
+        }
       `}
       
       /* size=small*/
@@ -146,9 +159,7 @@ const StyledButton = styled.button<ButtonProps>`
     ${props =>
       props.disabled &&
       css`
-        background-color: ${theme.palette.action.disabledBackground};
         color: ${theme.palette.text.disabled};
-        border-radius: ${theme.borderRadius.default};
       `};
     ${props =>
       props.variant === 'outlined' &&
@@ -174,6 +185,7 @@ export const Button: React.FC<ButtonProps> = ({
   label,
   disabled = false,
   variant = 'text',
+  ...props
 }) => {
   return (
     <StyledButton
@@ -183,6 +195,7 @@ export const Button: React.FC<ButtonProps> = ({
       fullWidth={fullWidth}
       disabled={disabled}
       variant={variant}
+      {...props}
     >
       {label}
     </StyledButton>
