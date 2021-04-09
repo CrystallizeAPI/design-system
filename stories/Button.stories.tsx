@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-
+import { action } from '@storybook/addon-actions';
 import { Button, ButtonProps } from '../src';
 
 export default {
@@ -17,12 +17,12 @@ const Template: Story<ButtonProps> = args => {
       style={{
         background: 'rgba(0, 0, 0, 0.04)',
         width: '100%',
-        height: '10vh',
+        height: '20vh',
         display: 'inline-block',
         padding: '10px',
       }}
     >
-      <Button {...args} />
+      <Button {...args} onClick={action('Clicked')} />
     </div>
   );
 };

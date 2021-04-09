@@ -9,13 +9,14 @@ const palette = {
     dark: '#8FDDCA',
     contrastText: '#4C4F5A',
     400: '#EDF7F6',
+    600: '#68baa6',
   },
   secondary: {
     light: '#FEFCDD',
     main: '#FFEFD2',
-    dark: '#ccbda1',
+    dark: '#ba9147',
     contrastText: '#4C4F5A',
-    400: "#fff7e8"
+    400: '#fff7e8',
   },
   error: {
     light: '#f47f98',

@@ -23,16 +23,15 @@ const outlined = css`
 `;
 
 const outlinedPrimary = css`
-  color: ${theme.palette.primary.dark};
+  color: ${theme.palette.primary[600]};
   background-color: transparent;
-  border: 1px solid ${theme.palette.primary.light};
+  border: 1px solid ${theme.palette.primary[600]};
   &:hover {
     border: 1px solid ${theme.palette.primary.dark};
     background-color: ${theme.palette.primary[400]};
   }
   &:active {
-    box-shadow: 0px 5px 6px -3px rgba(0, 0, 0, 0.2),
-      0px 9px 12px 1px rgba(0, 0, 0, 0.14), 0px 3px 16px 2px rgba(0, 0, 0, 0.12);
+    box-shadow: ${theme.shadows[5]};
   }
   &:disabled {
     border: 1px solid ${theme.palette.action.disabled};
@@ -43,14 +42,12 @@ const outlinedPrimary = css`
 const outlinedSecondary = css`
   color: ${theme.palette.secondary.dark};
   background-color: transparent;
-  border: 2px solid ${theme.palette.secondary.main};
+  border: 1px solid ${theme.palette.secondary.dark};
   &:hover {
-    border: 1px solid ${theme.palette.secondary.main};
-    background-color: ${theme.palette.secondary.light};
+    background-color: ${theme.palette.secondary[400]};
   }
   &:active {
-    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
-      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: ${theme.shadows[2]};
   }
   &:disabled {
     border: 1px solid ${theme.palette.action.disabled};
@@ -117,7 +114,7 @@ const StyledButton = styled.button<ButtonProps>`
     ${props =>
       props.color === 'primary' &&
       css`
-        color: ${theme.palette.primary.main};
+        color: ${theme.palette.primary[600]};
         &:hover {
           background-color: ${theme.palette.primary[400]};
         }
@@ -188,6 +185,7 @@ export const Button: React.FC<ButtonProps> = ({
   label,
   disabled = false,
   variant = 'text',
+  ...props
 }) => {
   return (
     <StyledButton
@@ -197,6 +195,7 @@ export const Button: React.FC<ButtonProps> = ({
       fullWidth={fullWidth}
       disabled={disabled}
       variant={variant}
+      {...props}
     >
       {label}
     </StyledButton>
