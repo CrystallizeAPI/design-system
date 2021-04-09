@@ -12,6 +12,16 @@ export interface ButtonProps {
   disabled?: boolean;
 }
 
+const outlined = css`
+  color: ${theme.palette.text.primary};
+  padding: 5px 15px;
+  border: 0.4px solid ${theme.palette.text.secondary};
+  border-radius: ${theme.borderRadius.default};
+  &:disabled {
+    border: 1px solid ${theme.palette.action.disabled};
+  }
+`;
+
 const outlinedPrimary = css`
   color: ${theme.palette.primary.dark};
   background-color: transparent;
@@ -45,16 +55,6 @@ const outlinedSecondary = css`
   &:disabled {
     border: 1px solid ${theme.palette.action.disabled};
     color: ${theme.palette.text.disabled};
-  }
-`;
-
-const outlined = css`
-  color: ${theme.palette.text.primary};
-  padding: 5px 15px;
-  border: 0.4px solid ${theme.palette.text.secondary};
-  border-radius: ${theme.borderRadius.default};
-  &:disabled {
-    border: 1px solid ${theme.palette.action.disabled};
   }
 `;
 
@@ -118,6 +118,9 @@ const StyledButton = styled.button<ButtonProps>`
       props.color === 'primary' &&
       css`
         color: ${theme.palette.primary.main};
+        &:hover {
+          background-color: ${theme.palette.primary[400]};
+        }
       `}
 
       /* color=secondary and variant=text*/
@@ -125,6 +128,9 @@ const StyledButton = styled.button<ButtonProps>`
       props.color === 'secondary' &&
       css`
         color: ${theme.palette.secondary.dark};
+        &:hover {
+          background-color: ${theme.palette.secondary[400]};
+        }
       `}
       
       /* size=small*/
@@ -156,9 +162,7 @@ const StyledButton = styled.button<ButtonProps>`
     ${props =>
       props.disabled &&
       css`
-        //background-color: ${theme.palette.action.disabledBackground};
         color: ${theme.palette.text.disabled};
-        //border-radius: ${theme.borderRadius.default};
       `};
     ${props =>
       props.variant === 'outlined' &&

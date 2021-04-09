@@ -15,6 +15,7 @@ const palette = {
     main: '#FFEFD2',
     dark: '#ccbda1',
     contrastText: '#4C4F5A',
+    400: "#fff7e8"
   },
   error: {
     light: '#f47f98',
