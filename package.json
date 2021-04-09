@@ -36,6 +36,7 @@
     "trailingComma": "es5"
   },
   "name": "cryslibrary",
+  "author": "Deeksha Sharma",
   "module": "dist/cryslibrary.esm.js",
   "private": false,
   "size-limit": [
