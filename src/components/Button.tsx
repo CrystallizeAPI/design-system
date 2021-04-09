@@ -24,6 +24,10 @@ const outlinedPrimary = css`
     box-shadow: 0px 5px 6px -3px rgba(0, 0, 0, 0.2),
       0px 9px 12px 1px rgba(0, 0, 0, 0.14), 0px 3px 16px 2px rgba(0, 0, 0, 0.12);
   }
+  &:disabled {
+    border: 1px solid ${theme.palette.action.disabled};
+    color: ${theme.palette.text.disabled};
+  }
 `;
 
 const outlinedSecondary = css`
@@ -40,7 +44,6 @@ const outlinedSecondary = css`
   }
   &:disabled {
     border: 1px solid ${theme.palette.action.disabled};
-    background-color: ${theme.palette.action.disabledBackground};
     color: ${theme.palette.text.disabled};
   }
 `;
@@ -59,14 +62,21 @@ const filled = css`
   background-color: ${theme.palette.common.white};
   color: ${theme.palette.primary.contrastText};
   border-radius: ${theme.borderRadius.default};
+  box-shadow: ${theme.shadows[2]};
   &:disabled {
     background-color: 1px solid ${theme.palette.action.disabled};
+    color: ${theme.palette.text.disabled};
+    box-shadow: ${theme.shadows[0]};
   }
   &:hover {
     background-color: ${theme.palette.action.hover};
+    box-shadow: ${theme.shadows[4]};
   }
   &:active {
-    background-color: ${theme.palette.action.hover};
+    box-shadow: ${theme.shadows[8]};
+  }
+  &:focus-visible {
+    box-shadow: ${theme.shadows[6]};
   }
 `;
 
@@ -146,9 +156,9 @@ const StyledButton = styled.button<ButtonProps>`
     ${props =>
       props.disabled &&
       css`
-        background-color: ${theme.palette.action.disabledBackground};
+        //background-color: ${theme.palette.action.disabledBackground};
         color: ${theme.palette.text.disabled};
-        border-radius: ${theme.borderRadius.default};
+        //border-radius: ${theme.borderRadius.default};
       `};
     ${props =>
       props.variant === 'outlined' &&

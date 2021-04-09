@@ -17,7 +17,7 @@ const Template: Story<ButtonProps> = args => {
       style={{
         background: 'rgba(0, 0, 0, 0.04)',
         width: '100%',
-        height: '20vh',
+        height: '10vh',
         display: 'inline-block',
         padding: '10px',
       }}
