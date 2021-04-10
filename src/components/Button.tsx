@@ -17,8 +17,12 @@ const outlined = css`
   padding: 5px 15px;
   border: 0.4px solid ${theme.palette.text.secondary};
   border-radius: ${theme.borderRadius.default};
+  &:hover {
+    background-color: ${theme.palette.action.hover};
+  }
   &:disabled {
     border: 1px solid ${theme.palette.action.disabled};
+    background-color: ${theme.palette.action.disabled};
   }
 `;
 
@@ -36,6 +40,7 @@ const outlinedPrimary = css`
   &:disabled {
     border: 1px solid ${theme.palette.action.disabled};
     color: ${theme.palette.text.disabled};
+    background-color: ${theme.palette.action.disabled};
   }
 `;
 
@@ -52,6 +57,7 @@ const outlinedSecondary = css`
   &:disabled {
     border: 1px solid ${theme.palette.action.disabled};
     color: ${theme.palette.text.disabled};
+    background-color: ${theme.palette.action.disabled};
   }
 `;
 
@@ -60,11 +66,6 @@ const filled = css`
   color: ${theme.palette.primary.contrastText};
   border-radius: ${theme.borderRadius.default};
   box-shadow: ${theme.shadows[2]};
-  &:disabled {
-    background-color: 1px solid ${theme.palette.action.disabled};
-    color: ${theme.palette.text.disabled};
-    box-shadow: ${theme.shadows[0]};
-  }
   &:hover {
     background-color: ${theme.palette.action.hover};
     box-shadow: ${theme.shadows[4]};
@@ -75,6 +76,10 @@ const filled = css`
   &:focus-visible {
     box-shadow: ${theme.shadows[6]};
   }
+  &:disabled {
+    background-color: ${theme.palette.action.disabled};
+    box-shadow: ${theme.shadows[0]};
+  }
 `;
 
 const filledPrimary = css`
@@ -84,6 +89,9 @@ const filledPrimary = css`
   &:hover {
     background-color: ${theme.palette.primary.dark};
   }
+  &:disabled {
+    background-color: ${theme.palette.action.disabled};
+  }
 `;
 
 const filledSecondary = css`
@@ -92,6 +100,9 @@ const filledSecondary = css`
   border-radius: ${theme.borderRadius.default};
   &:hover {
     background-color: ${theme.palette.secondary.dark};
+  }
+  &:disabled {
+    background-color: ${theme.palette.action.disabled};
   }
 `;
 
@@ -118,6 +129,9 @@ const StyledButton = styled.button<ButtonProps>`
         &:hover {
           background-color: ${theme.palette.primary[400]};
         }
+        &:disabled {
+          background-color: transparent;
+        }
       `}
 
       /* color=secondary and variant=text*/
@@ -127,6 +141,9 @@ const StyledButton = styled.button<ButtonProps>`
         color: ${theme.palette.secondary.dark};
         &:hover {
           background-color: ${theme.palette.secondary[400]};
+        }
+        &:disabled {
+          background-color: transparent;
         }
       `}
       
@@ -160,6 +177,7 @@ const StyledButton = styled.button<ButtonProps>`
       props.disabled &&
       css`
         color: ${theme.palette.text.disabled};
+        box-shadow: ${theme.shadows[0]};
       `};
     ${props =>
       props.variant === 'outlined' &&

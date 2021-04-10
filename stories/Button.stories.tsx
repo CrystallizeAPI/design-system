@@ -17,7 +17,7 @@ const Template: Story<ButtonProps> = args => {
       style={{
         background: 'rgba(0, 0, 0, 0.04)',
         width: '100%',
-        height: '20vh',
+        height: '100%',
         display: 'inline-block',
         padding: '10px',
       }}
@@ -74,12 +74,6 @@ FullWidthButton.args = {
   variant: 'filled',
 };
 
-export const OutlinedDefault = Template.bind({});
-OutlinedDefault.args = {
-  label: 'Outlined',
-  variant: 'outlined',
-};
-
 export const FilledDefault = Template.bind({});
 FilledDefault.args = {
   label: 'Filled Default',
@@ -114,6 +108,12 @@ FilledSecondaryLarge.args = {
   label: '+ Create webhook',
   variant: 'filled',
   color: 'secondary',
+};
+
+export const OutlinedDefault = Template.bind({});
+OutlinedDefault.args = {
+  label: 'Outlined',
+  variant: 'outlined',
 };
 
 export const OutlinedPrimary = Template.bind({});
