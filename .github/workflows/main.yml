@@ -30,3 +30,15 @@ jobs:
 
       - name: Build
         run: yarn build
+
+  publish_stories:
+    needs: build
+    name: Publish stories to Chromatic
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: yarn
+      - uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
