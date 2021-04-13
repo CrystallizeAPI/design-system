@@ -28,8 +28,10 @@ export const H1 = Template.bind({});
 H1.args = {
   $text: 'Welcome to Crystallize',
   $style: 'h1',
-  $textAlign: 'center',
+  $align: 'center',
   $gutter: true,
+  $display: 'block',
+  $wrapText: true,
 };
 
 export const H2 = Template.bind({});

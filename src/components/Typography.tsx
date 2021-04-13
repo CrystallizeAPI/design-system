@@ -1,17 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { GlobalStyle } from '../styles/theme';
 
 //TODO: Should we have a separate style for Button?
-//TODO: Should text color be inherited from the parent?
 export interface TypographyProps {
-  $color?:
-    | 'primary'
-    | 'secondary'
-    | 'default'
-    | 'primaryText'
-    | 'secondaryText'
-    | 'error';
+  $color?: 'primary' | 'secondary' | 'primaryText' | 'secondaryText' | 'error';
   $style?:
     | 'h1'
     | 'h2'
@@ -28,20 +21,62 @@ export interface TypographyProps {
   $display?: 'inline' | 'block' | 'inherit';
   $text?: string;
   $gutter?: boolean;
-  $textAlign?: 'center' | 'left' | 'right' | 'justify' | 'inherit';
+  $align?: 'left' | 'right' | 'center' | 'justify' | 'initial' | 'inherit';
   $wrapText?: boolean;
   $textParagraph?: boolean;
 }
 
 const StyledH1 = styled.h1<TypographyProps>`
-  text-align: inherit;
-  //overflow: hidden;
-  //text-overflow: ellipsis;
-  //white-space: nowrap;
   margin: 0;
-  display: inherit;
-  text-align: ${props => props.$textAlign};
-  margin-bottom: ${props => (props.$gutter ? `0.35em` : 0)};
+  display: ${props => (props.$display ? props.$display : `inherit`)};
+  text-align: ${props => (props.$align ? props.$align : `inherit`)};
+
+  ${props =>
+    props.$wrapText &&
+    props.$display === 'block' &&
+    css`
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    `}
+  
+  ${props =>
+    props.$textParagraph &&
+    css`
+      margin-bottom: 16px;
+    `}
+
+  ${props =>
+    props.$gutter &&
+    css`
+      margin-bottom: var(--typography-gutter);
+    `}
+  
+  ${props =>
+    props.$color === 'primary' &&
+    css`
+      color: var(--palette-primary-600);
+    `}
+  ${props =>
+    props.$color === 'secondary' &&
+    css`
+      color: var(--palette-secondary-dark);
+    `}
+  ${props =>
+    (props.$color === 'primaryText' || !props.$color) &&
+    css`
+      color: var(--palette-text-primary);
+    `}
+  ${props =>
+    props.$color === 'secondaryText' &&
+    css`
+      color: var(--palette-text-secondary);
+    `}
+  ${props =>
+    props.$color === 'error' &&
+    css`
+      color: var(--palette-error-main);
+    `}
 `;
 const StyledH2 = styled.h2<TypographyProps>`
   color: aquamarine;
