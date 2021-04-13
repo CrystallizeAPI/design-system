@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { GlobalStyle, getRemSize } from '../styles/themev2';
+import { GlobalStyle, getRemSize } from '../styles/theme';
 
 export interface ButtonProps {
   $color?: 'primary' | 'secondary' | 'default';
