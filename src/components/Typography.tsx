@@ -26,57 +26,53 @@ export interface TypographyProps {
   $textParagraph?: boolean;
 }
 
+const wrappedText = css`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+const gutterBottom = css`
+  margin-bottom: var(--typography-gutter);
+`;
+
+const paragraph = css`
+  margin-bottom: 16px;
+`;
+
+const primaryColor = css`
+  color: var(--palette-primary-600);
+`;
+
+const secondaryColor = css`
+  color: var(--palette-secondary-dark);
+`;
+
+const primaryTextColor = css`
+  color: var(--palette-text-primary);
+`;
+
+const secondaryTextColor = css`
+  color: var(--palette-text-secondary);
+`;
+
+const errorColor = css`
+  color: var(--palette-error-main);
+`;
+
 const StyledH1 = styled.h1<TypographyProps>`
   margin: 0;
   display: ${props => (props.$display ? props.$display : `inherit`)};
   text-align: ${props => (props.$align ? props.$align : `inherit`)};
-
+  ${props => props.$wrapText && props.$display === 'block' && wrappedText}
+  ${props => props.$textParagraph && paragraph}
+  ${props => props.$gutter && gutterBottom}
+  ${props => props.$color === 'primary' && primaryColor}
+  ${props => props.$color === 'secondary' && secondaryColor}
+  ${props => props.$color === 'secondaryText' && secondaryTextColor}
+  ${props => props.$color === 'error' && errorColor}
   ${props =>
-    props.$wrapText &&
-    props.$display === 'block' &&
-    css`
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    `}
-  
-  ${props =>
-    props.$textParagraph &&
-    css`
-      margin-bottom: 16px;
-    `}
-
-  ${props =>
-    props.$gutter &&
-    css`
-      margin-bottom: var(--typography-gutter);
-    `}
-  
-  ${props =>
-    props.$color === 'primary' &&
-    css`
-      color: var(--palette-primary-600);
-    `}
-  ${props =>
-    props.$color === 'secondary' &&
-    css`
-      color: var(--palette-secondary-dark);
-    `}
-  ${props =>
-    (props.$color === 'primaryText' || !props.$color) &&
-    css`
-      color: var(--palette-text-primary);
-    `}
-  ${props =>
-    props.$color === 'secondaryText' &&
-    css`
-      color: var(--palette-text-secondary);
-    `}
-  ${props =>
-    props.$color === 'error' &&
-    css`
-      color: var(--palette-error-main);
-    `}
+    (props.$color === 'primaryText' || !props.$color) && primaryTextColor}
 `;
 const StyledH2 = styled.h2<TypographyProps>`
   color: aquamarine;
