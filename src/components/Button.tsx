@@ -146,7 +146,7 @@ const StyledButton = styled.button<ButtonProps>`
       props.$size === 'small' &&
       css`
         padding: 6px 12px;
-         font-size: ${getRemSize(13)}rem;
+        font-size: ${getRemSize(13)}rem;
       `}
       
       /* size=large*/
