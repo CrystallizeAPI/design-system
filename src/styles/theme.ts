@@ -34,13 +34,6 @@ export const GlobalStyle = createGlobalStyle`
     
     --border-radius-small: 10px;
     --border-radius-default: 40px;
-
-    --html-font-size: 16;
-    --default-font-size: 14;
-    --font-weight-light: 300;
-    --font-weight-regular: 400;
-    --font-weight-medium: 500;
-    --font-weight-bold: 700;
     
     --shadow-none: none;
     --shadow-01: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
@@ -58,16 +51,81 @@ export const GlobalStyle = createGlobalStyle`
     --spacing-sm: 10;
     --spacing-md: 20;
     --spacing-lg: 30;
+
+    --html-font-size: 16;
+    --default-font-size: 14;
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
   }
   
   button {
     font-family: 'Roboto', sans-serif;
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
     font-size: 0.875rem;
     line-height: 1.75;
     letter-spacing: 0.02857em;
     text-transform: uppercase;
   }
+  
+  
+  h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: var(--font-weight-light);
+    font-size: 6rem;
+    line-height: 1.167;
+    letter-spacing: -0.01562em;
+  }
+  
+  h2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: var(--font-weight-light);
+    font-size: 3.75rem;
+    line-height: 1.2;
+    letter-spacing: -0.00833em;
+  }
+  
+  h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: var(--font-weight-regular);
+    font-size: 3rem;
+    line-height: 1.167;
+    letter-spacing: 0em;
+  }
+
+  h4 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: var(--font-weight-regular);
+    font-size: 2.125rem;
+    line-height: 1.235;
+    letter-spacing: 0.00735em;
+  }
+
+  h5 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: var(--font-weight-regular);
+    font-size: 1.5rem;
+    line-height: 1.334;
+    letter-spacing: 0em;
+  }
+
+  h6 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: var(--font-weight-medium);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    letter-spacing: 0.0075em;
+  }
+
+  h6 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: var(--font-weight-medium);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    letter-spacing: 0.0075em;
+  }
+
 `;
 
 export const getRemSize = (fontSize: number): number => {
