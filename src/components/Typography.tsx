@@ -61,6 +61,7 @@ const errorColor = css`
 `;
 
 const complexMixin = css<TypographyProps>`
+  margin: 0;
   display: ${props => (props.$display ? props.$display : `inherit`)};
   text-align: ${props => (props.$align ? props.$align : `inherit`)};
   ${props => props.$wrapText && props.$display === 'block' && wrappedText}
@@ -93,6 +94,40 @@ const StyledH6 = styled.h6<TypographyProps>`
   ${complexMixin};
 `;
 
+const StyledSubtitle1 = styled.h6<TypographyProps>`
+  font-weight: var(--font-weight-regular);
+  font-size: 1rem;
+  line-height: 1.75;
+  letter-spacing: 0.00938em;
+  ${complexMixin};
+`;
+
+const StyledSubtitle2 = styled.h6<TypographyProps>`
+  font-weight: var(--font-weight-medium);
+  font-size: 0.875rem;
+  line-height: 1.57;
+  letter-spacing: 0.00714em;
+  ${complexMixin};
+`;
+
+const StyledBody1 = styled.p<TypographyProps>`
+  font-family: 'Roboto', sans-serif;
+  font-weight: var(--font-weight-regular);
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  ${complexMixin};
+`;
+
+const StyledBody2 = styled.p<TypographyProps>`
+  font-family: 'Roboto', sans-serif;
+  font-weight: var(--font-weight-regular);
+  font-size: 0.875rem;
+  line-height: 1.43;
+  letter-spacing: 0.01071em;
+  ${complexMixin};
+`;
+
 export const Typography: React.FC<TypographyProps> = ({ ...props }) => {
   return (
     <>
@@ -103,6 +138,18 @@ export const Typography: React.FC<TypographyProps> = ({ ...props }) => {
       {props.$style === 'h4' && <StyledH4 {...props}>{props.$text}</StyledH4>}
       {props.$style === 'h5' && <StyledH5 {...props}>{props.$text}</StyledH5>}
       {props.$style === 'h6' && <StyledH6 {...props}>{props.$text}</StyledH6>}
+      {props.$style === 'subtitle1' && (
+        <StyledSubtitle1 {...props}>{props.$text}</StyledSubtitle1>
+      )}
+      {props.$style === 'subtitle2' && (
+        <StyledSubtitle2 {...props}>{props.$text}</StyledSubtitle2>
+      )}
+      {props.$style === 'body1' && (
+        <StyledBody1 {...props}>{props.$text}</StyledBody1>
+      )}
+      {props.$style === 'body2' && (
+        <StyledBody2 {...props}>{props.$text}</StyledBody2>
+      )}
     </>
   );
 };

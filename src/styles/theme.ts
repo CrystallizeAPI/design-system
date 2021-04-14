@@ -119,14 +119,6 @@ export const GlobalStyle = createGlobalStyle`
     letter-spacing: 0.0075em;
   }
 
-  h6 {
-    font-family: 'Roboto', sans-serif;
-    font-weight: var(--font-weight-medium);
-    font-size: 1.25rem;
-    line-height: 1.6;
-    letter-spacing: 0.0075em;
-  }
-
 `;
 
 export const getRemSize = (fontSize: number): number => {

@@ -66,3 +66,31 @@ H6.args = {
   $style: 'h6',
   $color: 'primary',
 };
+
+export const Subtitle1 = Template.bind({});
+Subtitle1.args = {
+    $text: 'Enhances user experience with webhooks',
+    $style: 'subtitle1',
+    $color: 'primaryText',
+};
+
+export const Subtitle2 = Template.bind({});
+Subtitle2.args = {
+    $text: 'Enhances user experience with webhooks',
+    $style: 'subtitle2',
+    $color: 'primaryText',
+};
+
+export const Body1 = Template.bind({});
+Body1.args = {
+    $text: 'Enhances user experience with webhooks',
+    $style: 'body1',
+    $color: 'primary',
+};
+
+export const Body2 = Template.bind({});
+Body2.args = {
+    $text: 'Enhances user experience with webhooks',
+    $style: 'body2',
+    $color: 'secondary',
+};
