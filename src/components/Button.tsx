@@ -192,29 +192,35 @@ const StyledButton = styled.button<ButtonProps>`
 
 `;
 
-export const Button: React.FC<ButtonProps> = ({
-  $color = 'default',
-  $fullWidth = false,
-  $size = 'medium',
-  $label,
-  disabled = false,
-  $variant = 'text',
-  ...props
-}) => {
-  return (
-    <>
-      <GlobalStyle />
-      <StyledButton
-        $color={$color}
-        $size={$size}
-        $label={$label}
-        $fullWidth={$fullWidth}
-        disabled={disabled}
-        $variant={$variant}
-        {...props}
-      >
-        {$label}
-      </StyledButton>
-    </>
-  );
-};
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      $color = 'default',
+      $fullWidth = false,
+      $size = 'medium',
+      $label,
+      disabled = false,
+      $variant = 'text',
+      ...props
+    },
+    ref
+  ) => {
+    return (
+      <>
+        <GlobalStyle />
+        <StyledButton
+          ref={ref}
+          $color={$color}
+          $size={$size}
+          $label={$label}
+          $fullWidth={$fullWidth}
+          disabled={disabled}
+          $variant={$variant}
+          {...props}
+        >
+          {$label}
+        </StyledButton>
+      </>
+    );
+  }
+);
