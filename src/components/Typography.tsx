@@ -60,8 +60,7 @@ const errorColor = css`
   color: var(--palette-error-main);
 `;
 
-const StyledH1 = styled.h1<TypographyProps>`
-  margin: 0;
+const complexMixin = css<TypographyProps>`
   display: ${props => (props.$display ? props.$display : `inherit`)};
   text-align: ${props => (props.$align ? props.$align : `inherit`)};
   ${props => props.$wrapText && props.$display === 'block' && wrappedText}
@@ -74,20 +73,24 @@ const StyledH1 = styled.h1<TypographyProps>`
   ${props =>
     (props.$color === 'primaryText' || !props.$color) && primaryTextColor}
 `;
+
+const StyledH1 = styled.h1<TypographyProps>`
+  ${complexMixin};
+`;
 const StyledH2 = styled.h2<TypographyProps>`
-  color: aquamarine;
+  ${complexMixin};
 `;
 const StyledH3 = styled.h3<TypographyProps>`
-  color: orange;
+  ${complexMixin};
 `;
 const StyledH4 = styled.h4<TypographyProps>`
-  color: blueviolet;
+  ${complexMixin};
 `;
 const StyledH5 = styled.h5<TypographyProps>`
-  color: brown;
+  ${complexMixin};
 `;
 const StyledH6 = styled.h6<TypographyProps>`
-  color: green;
+  ${complexMixin};
 `;
 
 export const Typography: React.FC<TypographyProps> = ({ ...props }) => {

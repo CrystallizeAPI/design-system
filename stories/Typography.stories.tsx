@@ -32,12 +32,14 @@ H1.args = {
   $gutter: true,
   $display: 'block',
   $wrapText: true,
+  $color: 'secondary',
 };
 
 export const H2 = Template.bind({});
 H2.args = {
   $text: 'Welcome to Crystallize',
   $style: 'h2',
+  $color: 'primary',
 };
 
 export const H3 = Template.bind({});
@@ -62,4 +64,5 @@ export const H6 = Template.bind({});
 H6.args = {
   $text: 'Welcome to Crystallize',
   $style: 'h6',
+  $color: 'primary',
 };
