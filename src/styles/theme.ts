@@ -59,10 +59,28 @@ export const GlobalStyle = createGlobalStyle`
     --font-weight-medium: 500;
     --font-weight-bold: 700;
     --typography-gutter:0.35em;
+
+    --default-font-family: 'Roboto', sans-serif;
+
+    --caption-font-family: var(--default-font-family);
+    --caption-font-weight: var(--font-weight-regular);
+    --caption-font-size: 0.75rem;
+    --caption-line-height: 1.66;
+    --caption-letter-spacing: 0.03333em;
+
+    --overline-font-family: var(--default-font-family);
+    --overline-font-weight: var(--font-weight-regular);
+    --overline-font-size: 0.75rem;
+    --overline-line-height: 2.66;
+    --overline-letter-spacing: 0.08333em;
+    --overline-text-transform: uppercase;
+    
+    
+    
   }
   
   button {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--default-font-family);
     font-weight: var(--font-weight-medium);
     font-size: 0.875rem;
     line-height: 1.75;
@@ -72,7 +90,7 @@ export const GlobalStyle = createGlobalStyle`
   
   
   h1 {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--default-font-family);
     font-weight: var(--font-weight-light);
     font-size: 6rem;
     line-height: 1.167;
@@ -80,7 +98,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   h2 {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--default-font-family);
     font-weight: var(--font-weight-light);
     font-size: 3.75rem;
     line-height: 1.2;
@@ -88,7 +106,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   h3 {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--default-font-family);
     font-weight: var(--font-weight-regular);
     font-size: 3rem;
     line-height: 1.167;
@@ -96,7 +114,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h4 {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--default-font-family);
     font-weight: var(--font-weight-regular);
     font-size: 2.125rem;
     line-height: 1.235;
@@ -104,7 +122,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h5 {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--default-font-family);
     font-weight: var(--font-weight-regular);
     font-size: 1.5rem;
     line-height: 1.334;
@@ -112,13 +130,12 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h6 {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--default-font-family);
     font-weight: var(--font-weight-medium);
     font-size: 1.25rem;
     line-height: 1.6;
     letter-spacing: 0.0075em;
   }
-
 `;
 
 export const getRemSize = (fontSize: number): number => {

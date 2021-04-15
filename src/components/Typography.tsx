@@ -3,6 +3,10 @@ import styled, { css } from 'styled-components';
 import { GlobalStyle } from '../styles/theme';
 
 //TODO: Should we have a separate style for Button?
+//Add a copyable property. We use that in PIM a lot
+//Add a editable property. That would work for mutating entities
+//Text could also be underlined
+//Its should also be possible to have a bold prop so that any style could be rendered bold as per the requirement.
 export interface TypographyProps {
   $color?: 'primary' | 'secondary' | 'primaryText' | 'secondaryText' | 'error';
   $style?:
@@ -128,6 +132,25 @@ const StyledBody2 = styled.p<TypographyProps>`
   ${complexMixin};
 `;
 
+const StyledCaption = styled.p<TypographyProps>`
+  font-family: var(--caption-font-family);
+  font-weight: var(--caption-font-weight);
+  font-size: var(--caption-font-size);
+  line-height: var(--caption-line-height);
+  letter-spacing: var(--caption-letter-spacing);
+  ${complexMixin};
+`;
+
+const StyledOverline = styled.p<TypographyProps>`
+  font-family: var(--overline-font-family);
+  font-weight: var(--overline-font-weight);
+  font-size: var(--overline-font-size);
+  line-height: var(--overline-line-height);
+  letter-spacing: var(--overline-letter-spacing);
+  text-transform: var(--overline-text-transform);
+  ${complexMixin};
+`;
+
 export const Typography: React.FC<TypographyProps> = ({ ...props }) => {
   return (
     <>
@@ -149,6 +172,12 @@ export const Typography: React.FC<TypographyProps> = ({ ...props }) => {
       )}
       {props.$style === 'body2' && (
         <StyledBody2 {...props}>{props.$text}</StyledBody2>
+      )}
+      {props.$style === 'caption' && (
+        <StyledCaption {...props}>{props.$text}</StyledCaption>
+      )}
+      {props.$style === 'overline' && (
+        <StyledOverline {...props}>{props.$text}</StyledOverline>
       )}
     </>
   );
