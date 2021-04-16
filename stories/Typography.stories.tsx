@@ -26,13 +26,14 @@ const Template: Story<TypographyProps> = args => {
 
 export const H1 = Template.bind({});
 H1.args = {
-  $text: 'Welcome to Crystallize',
-  $style: 'h1',
-  $align: 'center',
-  $gutter: true,
-  $display: 'block',
-  $wrapText: true,
-  $color: 'secondary',
+  children:
+    'Welcome to Crystallize Welcome to Crystallize Welcome to Crystallize Welcome to Crystallize',
+  style: 'h1',
+  align: 'center',
+  gutter: true,
+  display: 'block',
+  ellipsis: true,
+  color: 'secondary',
 };
 
 export const H2 = Template.bind({});
