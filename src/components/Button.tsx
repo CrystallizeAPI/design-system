@@ -12,6 +12,20 @@ export interface ButtonProps {
   children?: React.ReactNode;
 }
 
+/**
+ * To get rid of TS warnings "No overload match",
+ * 1. uncomment this code and use this interface in StyledButton definition as follows
+ * 2. const StyledButton = styled.button<StyledButtonProps>
+ **/
+// interface StyledButtonProps {
+//     $color?: 'primary' | 'secondary' | 'default';
+//     $variant?: 'filled' | 'outlined' | 'text';
+//     $size?: 'small' | 'medium' | 'large';
+//     $onClick?: () => void;
+//     $fullWidth?: boolean;
+//     disabled?: boolean;
+// }
+
 const outlined = css`
   color: var(--palette-text-primary);
   padding: 5px 15px;
