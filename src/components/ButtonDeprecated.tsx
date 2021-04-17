@@ -3,14 +3,26 @@
 // import { GlobalStyle, getRemSize } from '../styles/theme';
 //
 // export interface ButtonProps {
-//   $color?: 'primary' | 'secondary' | 'default';
+//   color?: 'primary' | 'secondary' | 'default';
+//   variant?: 'filled' | 'outlined' | 'text';
+//   size?: 'small' | 'medium' | 'large';
+//   label?: string;
+//   onClick?: () => void;
+//   fullWidth?: boolean;
+//   disabled?: boolean;
+//   children?: React.ReactNode;
+// }
+//
+// type ButtonWrapperProps = {
+//   $color: 'primary' | 'secondary' | 'default';
 //   $variant?: 'filled' | 'outlined' | 'text';
 //   $size?: 'small' | 'medium' | 'large';
-//   $label: string;
+//   $label?: string;
 //   onClick?: () => void;
 //   $fullWidth?: boolean;
 //   disabled?: boolean;
-// }
+//   $children?: React.ReactNode;
+// };
 //
 // const outlined = css`
 //   color: var(--palette-text-primary);
@@ -106,7 +118,7 @@
 //   }
 // `;
 //
-// const StyledButton = styled.button<ButtonProps>`
+// const StyledButton = styled.button<ButtonWrapperProps>`
 //   border-style: none;
 //   outline: 0;
 //   cursor: pointer;
@@ -192,32 +204,32 @@
 //
 // `;
 //
+// const ButtonWrapper = React.forwardRef<HTMLButtonElement, ButtonWrapperProps>(
+//   (props, ref) => {
+//     return (
+//       <StyledButton ref={ref} {...props}>
+//         {props.$label}
+//       </StyledButton>
+//     );
+//   }
+// );
+//
 // export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-//   (
-//     {
-//       $color = 'default',
-//       $fullWidth = false,
-//       $size = 'medium',
-//       disabled = false,
-//       $variant = 'text',
-//       ...props
-//     },
-//     ref
-//   ) => {
+//   ({ ...props }, ref) => {
 //     return (
 //       <>
 //         <GlobalStyle />
-//         <StyledButton
+//         <ButtonWrapper
 //           ref={ref}
-//           $color={$color}
-//           $size={$size}
-//           $fullWidth={$fullWidth}
-//           disabled={disabled}
-//           $variant={$variant}
+//           $color={props.color || 'default'}
+//           $size={props.size || 'medium'}
+//           $fullWidth={props.fullWidth || false}
+//           disabled={props.disabled || false}
+//           $variant={props.variant || 'text'}
+//           $label={props.label || ''}
+//           $children={props.children}
 //           {...props}
-//         >
-//           {props.$label}
-//         </StyledButton>
+//         />
 //       </>
 //     );
 //   }

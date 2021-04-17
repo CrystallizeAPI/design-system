@@ -6,21 +6,11 @@ export interface ButtonProps {
   color?: 'primary' | 'secondary' | 'default';
   variant?: 'filled' | 'outlined' | 'text';
   size?: 'small' | 'medium' | 'large';
-  label: string;
   onClick?: () => void;
   fullWidth?: boolean;
   disabled?: boolean;
+  children?: React.ReactNode;
 }
-
-type ButtonWrapperProps = {
-  $color: 'primary' | 'secondary' | 'default';
-  $variant?: 'filled' | 'outlined' | 'text';
-  $size?: 'small' | 'medium' | 'large';
-  $label: string;
-  onClick?: () => void;
-  $fullWidth?: boolean;
-  disabled?: boolean;
-};
 
 const outlined = css`
   color: var(--palette-text-primary);
@@ -116,15 +106,14 @@ const filledSecondary = css`
   }
 `;
 
-const StyledButton = styled.button<ButtonWrapperProps>`
+const StyledButton = styled.button`
   border-style: none;
   outline: 0;
-  cursor: pointer;
   display: inline-block;
   padding: 6px 16px;
   color: var(--palette-text-primary);
   background-color: transparent;
-    
+
       /* color=primary and variant=text*/
     ${props =>
       props.$color === 'primary' &&
@@ -150,7 +139,7 @@ const StyledButton = styled.button<ButtonWrapperProps>`
           background-color: transparent;
         }
       `}
-      
+
       /* size=small*/
     ${props =>
       props.$size === 'small' &&
@@ -158,7 +147,7 @@ const StyledButton = styled.button<ButtonWrapperProps>`
         padding: 6px 12px;
         font-size: ${getRemSize(13)}rem;
       `}
-      
+
       /* size=large*/
     ${props =>
       props.$size === 'large' &&
@@ -169,9 +158,9 @@ const StyledButton = styled.button<ButtonWrapperProps>`
 
       /*variant=outlined*/
     ${props => props.$variant === 'outlined' && outlined};
-  
+
     /*variant=filled*/
-    ${props => props.$variant === 'filled' && filled};   
+    ${props => props.$variant === 'filled' && filled};
     ${props =>
       props.$fullWidth &&
       css`
@@ -186,7 +175,7 @@ const StyledButton = styled.button<ButtonWrapperProps>`
     ${props =>
       props.$variant === 'outlined' &&
       props.$color === 'primary' &&
-      outlinedPrimary}; 
+      outlinedPrimary};
     ${props =>
       props.$variant === 'outlined' &&
       props.$color === 'secondary' &&
@@ -202,31 +191,22 @@ const StyledButton = styled.button<ButtonWrapperProps>`
 
 `;
 
-const ButtonWrapper = React.forwardRef<HTMLButtonElement, ButtonWrapperProps>(
-  (props, ref) => {
-    return (
-      <StyledButton ref={ref} {...props}>
-        {props.$label}
-      </StyledButton>
-    );
-  }
-);
-
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ ...props }, ref) => {
     return (
       <>
         <GlobalStyle />
-        <ButtonWrapper
+        <StyledButton
           ref={ref}
           $color={props.color || 'default'}
           $size={props.size || 'medium'}
           $fullWidth={props.fullWidth || false}
           disabled={props.disabled || false}
           $variant={props.variant || 'text'}
-          $label={props.label || ''}
           {...props}
-        />
+        >
+          {props.children}
+        </StyledButton>
       </>
     );
   }

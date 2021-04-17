@@ -74,9 +74,6 @@ export const GlobalStyle = createGlobalStyle`
     --overline-line-height: 2.66;
     --overline-letter-spacing: 0.08333em;
     --overline-text-transform: uppercase;
-    
-    
-    
   }
   
   button {
@@ -86,6 +83,7 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1.75;
     letter-spacing: 0.02857em;
     text-transform: uppercase;
+    cursor: pointer;
   }
   
   
