@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, TypographyProps } from '../src/components/Typography';
+import { Typography, TypographyProps } from '../src';
 import { Story, Meta } from '@storybook/react';
 
 export default {
@@ -29,91 +29,91 @@ H1.args = {
   children:
     'Welcome to Crystallize Welcome to Crystallize Welcome to Crystallize Welcome to Crystallize',
   style: 'h1',
-  align: 'center',
-  gutter: true,
+  align: 'left',
+  gutter: false,
   display: 'block',
   ellipsis: true,
-  color: 'secondary',
+  color: 'primary',
 };
 
 export const H2 = Template.bind({});
 H2.args = {
-  $text: 'Welcome to Crystallize',
-  $style: 'h2',
-  $color: 'primary',
+  children: 'Welcome to Crystallize',
+  style: 'h2',
+  color: 'primary',
 };
 
 export const H3 = Template.bind({});
 H3.args = {
-  $text: 'Welcome to Crystallize',
-  $style: 'h3',
+  children: 'Welcome to Crystallize',
+  style: 'h3',
 };
 
 export const H4 = Template.bind({});
 H4.args = {
-  $text: 'Welcome to Crystallize',
-  $style: 'h4',
+  children: 'Welcome to Crystallize',
+  style: 'h4',
 };
 
 export const H5 = Template.bind({});
 H5.args = {
-  $text: 'Welcome to Crystallize',
-  $style: 'h5',
+  children: 'Welcome to Crystallize',
+  style: 'h5',
 };
 
 export const H6 = Template.bind({});
 H6.args = {
-  $text: 'Welcome to Crystallize',
-  $style: 'h6',
-  $color: 'primary',
+  children: 'Welcome to Crystallize',
+  style: 'h6',
+  color: 'primary',
 };
 
 export const Subtitle1 = Template.bind({});
 Subtitle1.args = {
-  $text: 'Enhances user experience with webhooks',
-  $style: 'subtitle1',
-  $color: 'primaryText',
+  children: 'Enhances user experience with webhooks',
+  style: 'subtitle1',
+  color: 'primaryText',
 };
 
 export const Subtitle2 = Template.bind({});
 Subtitle2.args = {
-  $text: 'Enhances user experience with webhooks',
-  $style: 'subtitle2',
-  $color: 'primaryText',
+  children: 'Enhances user experience with webhooks',
+  style: 'subtitle2',
+  color: 'primaryText',
 };
 
 export const Body1 = Template.bind({});
 Body1.args = {
-  $text:
+  children:
     'Here we share information from programming to case studies and best practice within PIM & headless eCommerce.',
-  $style: 'body1',
-  $color: 'primary',
+  style: 'body1',
+  color: 'primary',
 };
 
 export const Body2 = Template.bind({});
 Body2.args = {
-  $text:
+  children:
     'Our fast headless eCommerce API makes it easy for developers to build fast eCommerce experiences enjoyed by your customers.',
-  $style: 'body2',
-  $color: 'secondary',
+  style: 'body2',
+  color: 'secondary',
 };
 
 export const Body2Error = Template.bind({});
 Body2Error.args = {
-  $text: 'Oops! something went terribly wrong',
-  $style: 'body2',
-  $color: 'error',
+  children: 'Oops! something went terribly wrong',
+  style: 'body2',
+  color: 'error',
 };
 
 export const Caption = Template.bind({});
 Caption.args = {
-  $text: 'This is caption text',
-  $style: 'caption',
+  children: 'This is caption text',
+  style: 'caption',
 };
 
 export const Overline = Template.bind({});
 Overline.args = {
-  $text: 'This is overline text',
-  $style: 'overline',
-  $color: 'secondary',
+  children: 'This is overline text',
+  style: 'overline',
+  color: 'secondary',
 };
