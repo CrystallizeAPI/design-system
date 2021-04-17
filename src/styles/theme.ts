@@ -88,7 +88,6 @@ export const GlobalStyle = createGlobalStyle`
   
   
   h1 {
-    font-family: var(--default-font-family);
     font-weight: var(--font-weight-light);
     font-size: 6rem;
     line-height: 1.167;
@@ -96,7 +95,6 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   h2 {
-    font-family: var(--default-font-family);
     font-weight: var(--font-weight-light);
     font-size: 3.75rem;
     line-height: 1.2;
@@ -104,7 +102,6 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   h3 {
-    font-family: var(--default-font-family);
     font-weight: var(--font-weight-regular);
     font-size: 3rem;
     line-height: 1.167;
@@ -112,7 +109,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h4 {
-    font-family: var(--default-font-family);
     font-weight: var(--font-weight-regular);
     font-size: 2.125rem;
     line-height: 1.235;
@@ -120,7 +116,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h5 {
-    font-family: var(--default-font-family);
     font-weight: var(--font-weight-regular);
     font-size: 1.5rem;
     line-height: 1.334;
@@ -128,7 +123,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h6 {
-    font-family: var(--default-font-family);
     font-weight: var(--font-weight-medium);
     font-size: 1.25rem;
     line-height: 1.6;

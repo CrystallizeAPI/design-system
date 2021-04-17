@@ -64,7 +64,7 @@ const errorColor = css`
 `;
 
 const TypographyCss = css`
-  font-family: var(--caption-font-family);
+  font-family: var(--default-font-family);
   margin: 0;
   display: ${props => (props.$display ? props.$display : `inherit`)};
   text-align: ${props => (props.$align ? props.$align : `inherit`)};
