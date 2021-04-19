@@ -63,13 +63,11 @@ export const GlobalStyle = createGlobalStyle`
     --default-font-family: 'Roboto', sans-serif;
 
     --caption-font-family: var(--default-font-family);
-    --caption-font-weight: var(--font-weight-regular);
     --caption-font-size: 0.75rem;
     --caption-line-height: 1.66;
     --caption-letter-spacing: 0.03333em;
 
     --overline-font-family: var(--default-font-family);
-    --overline-font-weight: var(--font-weight-regular);
     --overline-font-size: 0.75rem;
     --overline-line-height: 2.66;
     --overline-letter-spacing: 0.08333em;
