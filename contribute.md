@@ -5,27 +5,16 @@ This React component library is published to NPM.
 ## Start the project
 
 ```bash
+yarn install
+
 npm start # or yarn start
 ```
 
 This builds to `/dist` and runs the project in watch mode so any edits you save inside `src` causes a rebuild to `/dist`.
 
-Then run either Storybook or the example playground:
-
 > NOTE:
->
-> 1. Install the peer dependencies from the `package.json` before running this project.
->
-> 2. Stories should reference the components as if using the library. This has been aliased in the tsconfig and the storybook webpack config as a helper.
-
-### Install dependencies
-
-Then run the example inside another:
-
-```bash
-npm i # or yarn to install dependencies
-npm start # or yarn start
-```
+> 
+> Stories should reference the components as if using the library. This has been aliased in the tsconfig and the storybook webpack config as a helper.
 
 ### Storybook
 
@@ -89,23 +78,14 @@ tsconfig.json
 
 ### GitHub Actions
 
-Two actions are added by default:
-- `chromatic` which publishes the stories to Chromatic using the token.
-- `main` which installs deps w/ cache, lints, tests, and builds on all pushes against a Node and OS matrix
+Three actions come with this project:
+- `CI -> mail.yml` which installs deps w/ cache, lints, tests, builds on all pushes against a Node and OS matrix, and publish the stories to Chromatic using the token.
+- `Release -> release.yml` which publishes the library on NPM. This action only excutes when the PRs gets merged to `master` branch.
 - `size` which comments cost comparison of your library on every pull request using [size-limit](https://github.com/ai/size-limit)
 
 ## Module Formats
-
 CJS, ESModules, and UMD module formats are supported.
-
 The appropriate paths are configured in `package.json` and `dist/index.js` accordingly.
 
-## Deploying the Example Playground
-
-## Named Exports
-
-Per Palmer Group guidelines, [always use named exports.](https://github.com/palmerhq/typescript#exports) Code split inside your React app instead of your React library.
-
 ## Including Styles
-
 For vanilla CSS, you can include it at the root directory and add it to the `files` section in your `package.json`, so that it can be imported separately by your users and run through their bundler's loader.
