@@ -6,6 +6,7 @@ import { GlobalStyle } from '../styles/theme';
 //Add a editable property. That would work for mutating entities
 //Text could also be underlined
 //Its should also be possible to have a bold prop so that any style could be rendered bold as per the requirement.
+//TODO: Have all the css props inside the theme for subtitle1,2 Body1 and Body2
 export interface TypographyProps {
   color?: 'primary' | 'secondary' | 'primaryText' | 'secondaryText' | 'error';
   style?:
