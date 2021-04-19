@@ -13,18 +13,18 @@ export interface ButtonProps {
 }
 
 /**
- * To get rid of TS warnings "No overload match",
- * 1. uncomment this code and use this interface in StyledButton definition as follows
- * 2. const StyledButton = styled.button<StyledButtonProps>
+ * This is to prevent error TS2339: Property '$color', $variant etc does not exist on type,
+ * Styled components suggested using $ prefix with a prop when rendering the component. But we don't want consumers to use $ when using this library
+ * https://github.com/styled-components/styled-components/issues/3279.
  **/
-// interface StyledButtonProps {
-//     $color?: 'primary' | 'secondary' | 'default';
-//     $variant?: 'filled' | 'outlined' | 'text';
-//     $size?: 'small' | 'medium' | 'large';
-//     $onClick?: () => void;
-//     $fullWidth?: boolean;
-//     disabled?: boolean;
-// }
+interface StyledButtonProps {
+  $color?: ButtonProps['color'];
+  $variant?: ButtonProps['variant'];
+  $size?: ButtonProps['size'];
+  $onClick?: () => ButtonProps['onClick'];
+  $fullWidth?: ButtonProps['fullWidth'];
+  disabled?: boolean;
+}
 
 const outlined = css`
   color: var(--palette-text-primary);
@@ -120,7 +120,7 @@ const filledSecondary = css`
   }
 `;
 
-const StyledButton = styled.button`
+const StyledButton = styled.button<StyledButtonProps>`
   border-style: none;
   outline: 0;
   display: inline-block;
