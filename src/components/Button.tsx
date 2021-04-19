@@ -15,7 +15,7 @@ export interface ButtonProps {
 /**
  * This is to prevent error TS2339: Property '$color', $variant etc does not exist on type,
  * Styled components suggested using $ prefix with a prop when rendering the component. But we don't want consumers to use $ when using this library
- * https://github.com/styled-components/styled-components/issues/3279.
+ * https://github.com/styled-components/styled-components/issues/3279#issuecomment-695972483
  **/
 interface StyledButtonProps {
   $color?: ButtonProps['color'];
