@@ -117,3 +117,29 @@ Overline.args = {
   style: 'overline',
   color: 'secondary',
 };
+
+export const CaptionUnderlined = Template.bind({});
+CaptionUnderlined.args = {
+  children: 'This is caption text',
+  style: 'caption',
+  underline: true,
+  color: 'secondary',
+};
+
+export const Subtitle1Bold = Template.bind({});
+Subtitle1Bold.args = {
+  children: 'This is caption text',
+  style: 'subtitle1',
+  color: 'primary',
+  bold: true,
+};
+
+export const Body1BoldUnderline = Template.bind({});
+Body1BoldUnderline.args = {
+  children:
+      'Build fast eCommerce experiences with Crystallize',
+  style: 'body2',
+  color: 'secondary',
+  bold: true,
+  underline: true
+};
