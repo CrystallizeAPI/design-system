@@ -2,9 +2,6 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { GlobalStyle } from '../styles/theme';
 
-//Add a copyable property. We use that in PIM a lot
-//Add a editable property. That would work for mutating entities
-//TODO: Have all the css props inside the theme for subtitle1,2 Body1 and Body2
 export interface TypographyProps {
   color?: 'primary' | 'secondary' | 'primaryText' | 'secondaryText' | 'error';
   style?:
@@ -27,7 +24,6 @@ export interface TypographyProps {
   align?: 'left' | 'right' | 'center' | 'justify' | 'initial' | 'inherit';
   ellipsis?: boolean;
   textParagraph?: boolean;
-  children?: React.ReactNode;
 }
 
 /**
