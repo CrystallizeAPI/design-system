@@ -5,7 +5,6 @@ import { GlobalStyle } from '../styles/theme';
 //Add a copyable property. We use that in PIM a lot
 //Add a editable property. That would work for mutating entities
 //TODO: Have all the css props inside the theme for subtitle1,2 Body1 and Body2
-//TODO: bold prop currently does not work for h1, h2, h3, h4, h5,h6
 export interface TypographyProps {
   color?: 'primary' | 'secondary' | 'primaryText' | 'secondaryText' | 'error';
   style?:
@@ -69,7 +68,7 @@ const secondaryTextColor = `color: var(--palette-text-secondary);`;
 
 const errorColor = `color: var(--palette-error-main);`;
 
-const Caption = css<StyledTypographyProps>`
+const Caption = css`
   font-size: var(--caption-font-size);
   line-height: var(--caption-line-height);
   letter-spacing: var(--caption-letter-spacing);
@@ -94,8 +93,8 @@ const Body1 = css`
   letter-spacing: 0.00938em;
 `;
 
-const Subtitle2 = css<StyledTypographyProps>`
-  font-weight: ${props => (props.$bold ? `bold` : `var(--font-weight-medium`)};
+const Subtitle2 = css`
+  font-weight: var(--font-weight-medium);
   font-size: 0.875rem;
   line-height: 1.57;
   letter-spacing: 0.00714em;
