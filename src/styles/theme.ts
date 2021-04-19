@@ -70,6 +70,22 @@ export const GlobalStyle = createGlobalStyle`
     --overline-line-height: 2.66;
     --overline-letter-spacing: 0.08333em;
     --overline-text-transform: uppercase;
+    
+    --body1-font-size: 1rem;
+    --body1-line-height: 1.5;
+    --body1-letter-spacing: 0.00938em;
+
+    --body2-font-size: 0.875rem;
+    --body2-line-height: 1.43;
+    --body2-letter-spacing: 0.01071em;
+    
+    --subtitle1-font-size: 1rem;
+    --subtitle1-line-height: 1.75;
+    --subtitle1-letter-spacing: 0.00938em;
+
+    --subtitle2-font-size: 0.875rem;
+    --subtitle2-line-height: 1.57;
+    --subtitle2-letter-spacing: 0.00714em;
   }
   
   button {

@@ -82,28 +82,28 @@ const Overline = css`
 `;
 
 const Body2 = css`
-  font-size: 0.875rem;
-  line-height: 1.43;
-  letter-spacing: 0.01071em;
+  font-size: var(--body2-font-size);
+  line-height: var(--body2-line-height);
+  letter-spacing: var(--body2-letter-spacing);
 `;
 
 const Body1 = css`
-  font-size: 1rem;
-  line-height: 1.5;
-  letter-spacing: 0.00938em;
+  font-size: var(--body1-font-size);
+  line-height: var(--body1-line-height);
+  letter-spacing: var(--body1-letter-spacing);
 `;
 
 const Subtitle2 = css`
   font-weight: var(--font-weight-medium);
-  font-size: 0.875rem;
-  line-height: 1.57;
-  letter-spacing: 0.00714em;
+  font-size: var(--subtitle2-font-size);
+  line-height: var(--subtitle2-line-height);
+  letter-spacing: var(--subtitle2-letter-spacing);
 `;
 
 const Subtitle1 = css`
-  font-size: 1rem;
-  line-height: 1.75;
-  letter-spacing: 0.00938em;
+  font-size: var(--subtitle1-font-size);
+  line-height: var(--subtitle1-line-height);
+  letter-spacing: var(--subtitle1-letter-spacing);
 `;
 
 const StyledTypography = styled.span<StyledTypographyProps>`
