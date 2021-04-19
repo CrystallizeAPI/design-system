@@ -24,6 +24,7 @@ export interface TypographyProps {
   align?: 'left' | 'right' | 'center' | 'justify' | 'initial' | 'inherit';
   ellipsis?: boolean;
   textParagraph?: boolean;
+  children?: React.ReactNode;
 }
 
 /**
@@ -41,7 +42,6 @@ interface StyledTypographyProps {
   $align?: TypographyProps['align'];
   $ellipsis?: TypographyProps['ellipsis'];
   $textParagraph?: TypographyProps['textParagraph'];
-  $children?: React.ReactNode;
 }
 
 const withEllipsis = css`
