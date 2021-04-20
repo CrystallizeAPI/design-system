@@ -35,17 +35,17 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "crystallize-design-system",
+  "name": "@crystallize/ui",
   "author": "Deeksha Sharma",
-  "module": "dist/crystallize-design-system.esm.js",
+  "module": "dist/ui.esm.js",
   "private": false,
   "size-limit": [
     {
-      "path": "dist/crystallize-design-system.cjs.production.min.js",
+      "path": "dist/ui.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/crystallize-design-system.esm.js",
+      "path": "dist/ui.esm.js",
       "limit": "10 KB"
     }
   ],
