@@ -1,8 +1,7 @@
 # How to install this library?
 
-//TODO: Change the name when published to NPM 
 ```bash
-yarn add crystallize-design-system styled-components
+yarn add @crystallize/ui styled-components
 ```
 
 Note: You also need React to be able to work with this library.
