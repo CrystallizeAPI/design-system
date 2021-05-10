@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { Checkbox } from '../src';
 
 describe('Renders Checkbox Component', () => {
@@ -13,5 +13,19 @@ describe('Renders Checkbox Component', () => {
     );
 
     expect(screen.getByRole('checkbox')).toBeInTheDocument();
+  });
+
+  it('Checkbox is interactive', () => {
+    const handleChangeMocked = jest.fn();
+    render(
+      <Checkbox
+        checked={false}
+        disabled={false}
+        onChange={handleChangeMocked}
+      />
+    );
+
+    fireEvent.click(screen.getByRole('checkbox'));
+    expect(handleChangeMocked).toHaveBeenCalledTimes(1);
   });
 });
