@@ -10,7 +10,7 @@ const Outer = styled.div`
 const CheckboxUI = styled.span<CustomCheckboxProps>`
   --size: 24px;
   --border-radius: 4px;
-  --opacity-disabled: 0.5
+  --opacity-disabled: 0.5;
 
   align-items: center;
   border: ${props =>
