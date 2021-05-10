@@ -7,15 +7,17 @@ const Outer = styled.div`
   position: relative;
 `;
 
-const CustomUi = styled.span<CustomCheckboxProps>`
+const CheckboxUI = styled.span<CustomCheckboxProps>`
   --size: 24px;
+  --border-radius: 4px;
+  --opacity-disabled: 0.5
 
   align-items: center;
   border: ${props =>
     props.checked
       ? `2px solid ${theme.palette.primary.main}`
       : `2px solid ${theme.palette.action.disabled}`};
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   display: inline-flex;
   height: var(--size);
   justify-content: center;
@@ -24,14 +26,15 @@ const CustomUi = styled.span<CustomCheckboxProps>`
   z-index: 1;
 
   &[disabled] {
-    opacity: 0.5;
+    opacity: var(--opacity-disabled);
   }
 
+  // We create an inner box
   &::after {
     --size: 75%;
 
     background: ${theme.palette.primary.main};
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     content: '';
     display: inline-block;
     height: var(--size);
@@ -41,7 +44,7 @@ const CustomUi = styled.span<CustomCheckboxProps>`
     width: var(--size);
 
     &[disabled] {
-      opacity: 0.5;
+      opacity: var(--opacity-disabled);
     }
   }
 `;
@@ -63,7 +66,7 @@ const Input = styled.input<CheckboxProps>`
   }
 
   &:hover {
-    + ${CustomUi} {
+    + ${CheckboxUI} {
       ${p =>
         p.checked
           ? css`
@@ -113,7 +116,11 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         onChange={onChange}
         {...props}
       />
-      <CustomUi checked={checked} disabled={disabled} data-checked={checked} />
+      <CheckboxUI
+        checked={checked}
+        disabled={disabled}
+        data-checked={checked}
+      />
     </Outer>
   );
 };
