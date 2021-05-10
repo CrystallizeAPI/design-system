@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Button } from '../src/';
+import { Button } from './index';
 
 describe('Renders Button Component', () => {
   it('button is visible', () => {

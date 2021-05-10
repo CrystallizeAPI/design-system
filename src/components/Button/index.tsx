@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { theme } from '../styles/theme';
+import { theme } from '../../styles/theme';
 
 export interface ButtonProps {
   color?: 'primary' | 'secondary' | 'default';
@@ -120,7 +120,7 @@ const StyledButton = styled.button<ButtonProps>`
   text-transform: ${theme.typography.button.textTransform};
   letter-spacing: ${theme.typography.button.letterSpacing};
   background-color: transparent;
-    
+
       /* color=primary and variant=text*/
     ${props =>
       props.color === 'primary' &&
@@ -146,7 +146,7 @@ const StyledButton = styled.button<ButtonProps>`
           background-color: transparent;
         }
       `}
-      
+
       /* size=small*/
     ${props =>
       props.size === 'small' &&
@@ -154,7 +154,7 @@ const StyledButton = styled.button<ButtonProps>`
         padding: 6px 12px;
         font-size: ${theme.typography.remSize(13)};
       `}
-      
+
       /* size=large*/
     ${props =>
       props.size === 'large' &&
@@ -165,9 +165,9 @@ const StyledButton = styled.button<ButtonProps>`
 
       /*variant=outlined*/
     ${props => props.variant === 'outlined' && outlined};
-  
+
     /*variant=filled*/
-    ${props => props.variant === 'filled' && filled};   
+    ${props => props.variant === 'filled' && filled};
     ${props =>
       props.fullWidth &&
       css`
@@ -182,7 +182,7 @@ const StyledButton = styled.button<ButtonProps>`
     ${props =>
       props.variant === 'outlined' &&
       props.color === 'primary' &&
-      outlinedPrimary}; 
+      outlinedPrimary};
     ${props =>
       props.variant === 'outlined' &&
       props.color === 'secondary' &&
