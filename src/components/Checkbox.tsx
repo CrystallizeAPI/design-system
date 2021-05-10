@@ -22,7 +22,6 @@ const CustomUi = styled.span<CustomCheckboxProps>`
   position: relative;
   width: var(--size);
   z-index: 1;
-  position: relative;
 
   &[disabled] {
     opacity: 0.5;
@@ -61,7 +60,6 @@ const Input = styled.input<CheckboxProps>`
   &[disabled] {
     cursor: default;
     pointer-events: none;
-    opacity: 0.5;
   }
 
   &:hover {
