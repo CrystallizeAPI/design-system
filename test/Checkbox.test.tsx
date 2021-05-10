@@ -6,13 +6,15 @@ describe('Renders Checkbox Component', () => {
   it('Checkbox is visible', () => {
     render(
       <Checkbox
-        checked={false}
+        checked={true}
         disabled={false}
         onChange={newValue => console.log(newValue)}
       />
     );
 
-    expect(screen.getByRole('checkbox')).toBeInTheDocument();
+    const checkboxEl = screen.getByRole('checkbox');
+    expect(checkboxEl).toBeInTheDocument();
+    expect(checkboxEl).toBeChecked();
   });
 
   it('Checkbox is interactive', () => {
