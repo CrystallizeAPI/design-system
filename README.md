@@ -12,10 +12,10 @@ This builds to `/dist` and runs the project in watch mode so any edits you save 
 
 Then run either Storybook or the example playground:
 
-> NOTE: 
-> 
-> 1. Install the peer dependencies from the `package.json` before running this project. 
-> 
+> NOTE:
+>
+> 1. Install the peer dependencies from the `package.json` before running this project.
+>
 > 2. Stories should reference the components as if using the library. This has been aliased in the tsconfig and the storybook webpack config as a helper.
 
 ### Install dependencies
@@ -66,9 +66,9 @@ This is the folder structure we set up for you:
 /src
   index.tsx       # Main file to export the components
 /test             # Jest tests
-/stories          # Stories for the components 
+/stories          # Stories for the components
 
-/.storybook       # Storybook consfiguration files 
+/.storybook       # Storybook consfiguration files
   main.js
   preview.js
 .gitignore
