@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Checkbox, ButtonProps } from '../src';
+import { Checkbox, CheckboxProps } from '../src';
 
 export default {
   title: 'Example/Checkbox',
@@ -8,7 +8,7 @@ export default {
 } as Meta;
 
 // The args props must be before  the `onChange` or this one will be overwritten
-const Template: Story<ButtonProps> = args => {
+const Template: Story<CheckboxProps> = args => {
   return (
     <div
       style={{
