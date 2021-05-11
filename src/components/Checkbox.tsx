@@ -4,7 +4,7 @@ import { theme } from '../styles/theme';
 
 type ColorType = 'primary' | 'secondary';
 export interface CheckboxProps {
-  color: ColorType;
+  color?: ColorType;
   checked: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
@@ -13,7 +13,7 @@ export interface CheckboxProps {
 }
 
 export interface CustomCheckboxProps {
-  color: ColorType;
+  color?: ColorType;
   checked: boolean;
   disabled: boolean;
 }
@@ -31,7 +31,7 @@ const CheckboxRoot = styled.div`
 const Box = styled.span<CustomCheckboxProps>`
   align-items: center;
   border: ${props =>
-    props.checked
+    props.checked && props.color
       ? `2px solid ${getColorVariants(props.color).main}`
       : `2px solid ${theme.palette.action.disabled}`};
   border-radius: var(--border-radius);
@@ -89,14 +89,16 @@ const Input = styled.input<CheckboxProps>`
   &:hover {
     + ${Box} {
       ${p =>
-        p.checked
+        p.color && p.checked
           ? css`
               border: 2px solid ${getColorVariants(p.color).dark};
               &:after {
                 background-color: ${getColorVariants(p.color).dark};
               }
             `
-          : css`
+          : p.color &&
+            !p.checked &&
+            css`
               border: 2px solid ${getColorVariants(p.color).main};
             `}
     }
