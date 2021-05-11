@@ -1,6 +1,6 @@
 # How to install this library?
 
-```bash
+```shell
 yarn add @crystallize/ui styled-components
 ```
 
@@ -11,7 +11,7 @@ Note: You also need React to be able to work with this library.
 ```js
 import {Button} from "@crystallize/ui";
 
-function App() {
+function App() { 
     return (
         <div className="App" style={{justifyContent: "space-between", alignItems: "center", marginTop: "10vh"}}>
             <Button color={"primary"} variant="filled" size={"large"}>Add to Cart</Button>
