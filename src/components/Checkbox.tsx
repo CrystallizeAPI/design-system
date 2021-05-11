@@ -3,19 +3,22 @@ import styled, { css } from 'styled-components';
 import { theme } from '../styles/theme';
 
 type ColorType = 'primary' | 'secondary';
+type CheckboxSizeType = 'small' | 'medium' | 'large';
 export interface CheckboxProps {
-  color?: ColorType;
   checked: boolean;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  color?: ColorType;
   disabled?: boolean;
   id?: string;
   name?: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  size?: CheckboxSizeType;
 }
 
 export interface CustomCheckboxProps {
   color?: ColorType;
   checked: boolean;
   disabled: boolean;
+  size: CheckboxSizeType;
 }
 
 export enum checkboxColors {
@@ -23,10 +26,13 @@ export enum checkboxColors {
   secondary = 'secondary',
 }
 
+export enum checkboxSizes {
+  small = 'small',
+  medium = 'medium',
+  large = 'large',
+}
+
 const CheckboxRoot = styled.div`
-  --size: 24px;
-  --inner-size: 75%;
-  --border-radius: 4px;
   --opacity-disabled: 0.5;
 
   display: inline-flex;
@@ -39,21 +45,41 @@ const Box = styled.span<CustomCheckboxProps>`
     props.checked && props.color
       ? `2px solid ${getColorVariants(props.color).main}`
       : `2px solid ${theme.palette.action.disabled}`};
-  border-radius: var(--border-radius);
+  border-radius: 4px;
   display: inline-flex;
-  height: var(--size);
   justify-content: center;
   position: relative;
-  width: var(--size);
   z-index: 1;
 
   &[disabled] {
     opacity: var(--opacity-disabled);
   }
 
+  ${props =>
+    props.size === checkboxSizes.small &&
+    css`
+      width: 14px;
+      height: 14px;
+    `}
+
+  ${props =>
+    props.size === checkboxSizes.medium &&
+    css`
+      width: 24px;
+      height: 24px;
+    `}
+
+  ${props =>
+    props.size === checkboxSizes.large &&
+    css`
+      width: 32px;
+      height: 32px;
+    `}
+
   // We create an inner box
   &::after {
-    border-radius: var(--border-radius);
+    --inner-size: 75%;
+    border-radius: 2px;
     content: '';
     display: inline-block;
     height: var(--inner-size);
@@ -117,6 +143,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   id,
   name,
   onChange,
+  size = checkboxSizes.medium,
   ...props
 }) => {
   const commonProps = {
@@ -129,15 +156,15 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   return (
     <CheckboxRoot>
       <Input
+        aria-checked={checked}
         id={id}
         name={name}
-        type="checkbox"
-        aria-checked={checked}
         onChange={onChange}
+        type="checkbox"
         {...commonProps}
         {...props}
       />
-      <Box {...commonProps} />
+      <Box {...commonProps} size={size} />
     </CheckboxRoot>
   );
 };
