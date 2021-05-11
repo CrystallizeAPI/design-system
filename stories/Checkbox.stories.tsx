@@ -7,6 +7,10 @@ export default {
   component: Checkbox,
 } as Meta;
 
+function Space() {
+  return <div style={{ marginRight: '16px' }}></div>;
+}
+
 // The args props must be before  the `onChange` or this one will be overwritten
 const Template: Story<CheckboxProps> = args => {
   return (
@@ -14,12 +18,47 @@ const Template: Story<CheckboxProps> = args => {
       style={{
         width: '100%',
         height: '100%',
-        display: 'inline-block',
         padding: '10px',
+        display: 'flex',
       }}
     >
       <Checkbox
         {...args}
+        checked={false}
+        disabled={false}
+        id="here-goes-your-id"
+        name="here-goes-your-name"
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+          window.alert(`The new value would be ${event.target.checked}`)
+        }
+      />
+      <Space />
+      <Checkbox
+        {...args}
+        checked={true}
+        disabled={false}
+        id="here-goes-your-id"
+        name="here-goes-your-name"
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+          window.alert(`The new value would be ${event.target.checked}`)
+        }
+      />
+      <Space />
+      <Checkbox
+        {...args}
+        checked={false}
+        disabled={true}
+        id="here-goes-your-id"
+        name="here-goes-your-name"
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+          window.alert(`The new value would be ${event.target.checked}`)
+        }
+      />
+      <Space />
+      <Checkbox
+        {...args}
+        checked={true}
+        disabled={true}
         id="here-goes-your-id"
         name="here-goes-your-name"
         onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
@@ -30,54 +69,30 @@ const Template: Story<CheckboxProps> = args => {
   );
 };
 
-export const PrimaryUncheckedEnabled = Template.bind({});
-PrimaryUncheckedEnabled.args = {
-  checked: false,
-  disabled: false,
+export const Primary = Template.bind({});
+Primary.args = {
+  color: 'primary',
 };
 
-export const PrimaryCheckedEnabled = Template.bind({});
-PrimaryCheckedEnabled.args = {
-  checked: true,
-  disabled: false,
-};
-
-export const PrimaryUncheckedDisabled = Template.bind({});
-PrimaryUncheckedDisabled.args = {
-  checked: false,
-  disabled: true,
-};
-
-export const PrimaryCheckedDisabled = Template.bind({});
-PrimaryCheckedDisabled.args = {
-  checked: true,
-  disabled: true,
-};
-
-export const SecondaryUncheckedEnabled = Template.bind({});
-SecondaryUncheckedEnabled.args = {
-  checked: false,
-  disabled: false,
+export const Secondary = Template.bind({});
+Secondary.args = {
   color: 'secondary',
 };
 
-export const SecondaryCheckedEnabled = Template.bind({});
-SecondaryCheckedEnabled.args = {
-  checked: true,
-  disabled: false,
-  color: 'secondary',
+export const Small = Template.bind({});
+Small.args = {
+  color: 'primary',
+  size: 'small',
 };
 
-export const SecondaryUncheckedDisabled = Template.bind({});
-SecondaryUncheckedDisabled.args = {
-  checked: false,
-  disabled: true,
-  color: 'secondary',
+export const Medium = Template.bind({});
+Medium.args = {
+  color: 'primary',
+  size: 'medium',
 };
 
-export const SecondaryCheckedDisabled = Template.bind({});
-SecondaryCheckedDisabled.args = {
-  checked: true,
-  disabled: true,
-  color: 'secondary',
+export const Large = Template.bind({});
+Large.args = {
+  color: 'primary',
+  size: 'large',
 };
