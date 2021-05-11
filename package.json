@@ -27,7 +27,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsdx lint && yarn test"
+      "pre-commit": "tsdx lint && tsdx test"
     }
   },
   "prettier": {
