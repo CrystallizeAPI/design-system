@@ -131,15 +131,14 @@ Subtitle1Bold.args = {
   children: 'This is caption text',
   style: 'subtitle1',
   color: 'primary',
-  bold: true,
+  weight: 'bold',
 };
 
-export const Body1BoldUnderline = Template.bind({});
-Body1BoldUnderline.args = {
-  children:
-      'Build fast eCommerce experiences with Crystallize',
+export const Body1LightUnderline = Template.bind({});
+Body1LightUnderline.args = {
+  children: 'Build fast eCommerce experiences with Crystallize',
   style: 'body2',
   color: 'secondary',
-  bold: true,
-  underline: true
+  weight: 'lighter',
+  underline: true,
 };

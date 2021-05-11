@@ -18,7 +18,7 @@ export interface TextProps {
     | 'caption'
     | 'overline';
   underline?: boolean;
-  bold?: boolean;
+  weight?: 'normal' | 'bold' | 'bolder' | 'lighter' | 'number';
   display?: 'inline' | 'block' | 'inherit';
   gutter?: boolean;
   align?: 'left' | 'right' | 'center' | 'justify' | 'initial' | 'inherit';
@@ -36,7 +36,7 @@ interface StyledTextProps {
   $color?: TextProps['color'];
   $style?: TextProps['style'];
   $underline?: TextProps['underline'];
-  $bold?: TextProps['bold'];
+  $weight?: TextProps['weight'];
   $display?: TextProps['display'];
   $gutter?: TextProps['gutter'];
   $align?: TextProps['align'];
@@ -108,8 +108,7 @@ const StyledText = styled.span<StyledTextProps>`
   display: ${props => (props.$display ? props.$display : `inherit`)};
   text-align: ${props => (props.$align ? props.$align : `inherit`)};
   text-decoration-line: ${props => props.$underline && `underline`};
-  font-weight: ${props =>
-    props.$bold ? `bold` : `var(--font-weight-regular)`};
+  font-weight: ${props => (props.$weight ? props.$weight : `normal`)};
   ${props => props.$ellipsis && props.$display === 'block' && withEllipsis}
   ${props => props.$textParagraph && paragraph}
   ${props => props.$gutter && gutterBottom}
@@ -142,7 +141,7 @@ export const Text = React.forwardRef<HTMLSpanElement, TextProps>(
           $ellipsis={props.ellipsis || false}
           $textParagraph={props.textParagraph || false}
           $underline={props.underline || false}
-          $bold={props.bold || false}
+          $weight={props.weight || 'normal'}
           as={props.style}
         >
           {props.children}
