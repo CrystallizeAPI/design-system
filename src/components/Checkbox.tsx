@@ -18,6 +18,11 @@ export interface CustomCheckboxProps {
   disabled: boolean;
 }
 
+export enum checkboxColors {
+  primary = 'primary',
+  secondary = 'secondary',
+}
+
 const CheckboxRoot = styled.div`
   --size: 24px;
   --inner-size: 75%;
@@ -106,7 +111,7 @@ const Input = styled.input<CheckboxProps>`
 `;
 
 export const Checkbox: React.FC<CheckboxProps> = ({
-  color = 'primary',
+  color = checkboxColors.primary,
   checked = false,
   disabled = false,
   id,
@@ -120,6 +125,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     color: color,
     disabled: disabled,
   };
+
   return (
     <CheckboxRoot>
       <Input
