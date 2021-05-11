@@ -19,9 +19,9 @@ const Template: Story<CheckboxProps> = args => {
       }}
     >
       <Checkbox
-        checked={false}
-        disabled={false}
         {...args}
+        id="here-goes-your-id"
+        name="here-goes-your-name"
         onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
           window.alert(`The new value would be ${event.target.checked}`)
         }
@@ -30,21 +30,54 @@ const Template: Story<CheckboxProps> = args => {
   );
 };
 
-export const UncheckedEnabledCheckbox = Template.bind({});
-UncheckedEnabledCheckbox.args = {};
-
-export const CheckedEnabledCheckbox = Template.bind({});
-CheckedEnabledCheckbox.args = {
-  checked: true,
+export const PrimaryUncheckedEnabled = Template.bind({});
+PrimaryUncheckedEnabled.args = {
+  checked: false,
+  disabled: false,
 };
 
-export const UnheckedDisabledCheckbox = Template.bind({});
-UnheckedDisabledCheckbox.args = {
+export const PrimaryCheckedEnabled = Template.bind({});
+PrimaryCheckedEnabled.args = {
+  checked: true,
+  disabled: false,
+};
+
+export const PrimaryUncheckedDisabled = Template.bind({});
+PrimaryUncheckedDisabled.args = {
+  checked: false,
   disabled: true,
 };
 
-export const CheckedDisabledCheckbox = Template.bind({});
-CheckedDisabledCheckbox.args = {
+export const PrimaryCheckedDisabled = Template.bind({});
+PrimaryCheckedDisabled.args = {
   checked: true,
   disabled: true,
+};
+
+export const SecondaryUncheckedEnabled = Template.bind({});
+SecondaryUncheckedEnabled.args = {
+  checked: false,
+  disabled: false,
+  color: 'secondary',
+};
+
+export const SecondaryCheckedEnabled = Template.bind({});
+SecondaryCheckedEnabled.args = {
+  checked: true,
+  disabled: false,
+  color: 'secondary',
+};
+
+export const SecondaryUncheckedDisabled = Template.bind({});
+SecondaryUncheckedDisabled.args = {
+  checked: false,
+  disabled: true,
+  color: 'secondary',
+};
+
+export const SecondaryCheckedDisabled = Template.bind({});
+SecondaryCheckedDisabled.args = {
+  checked: true,
+  disabled: true,
+  color: 'secondary',
 };
