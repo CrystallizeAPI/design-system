@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { GlobalStyle } from '../styles/theme';
 
-export interface TypographyProps {
+export interface TextProps {
   color?: 'primary' | 'secondary' | 'primaryText' | 'secondaryText' | 'error';
   style?:
     | 'h1'
@@ -32,16 +32,16 @@ export interface TypographyProps {
  * Styled components suggested using $ prefix with a prop when rendering the component. But we don't want consumers to use $ when using this library
  * https://github.com/styled-components/styled-components/issues/3279#issuecomment-695972483.
  **/
-interface StyledTypographyProps {
-  $color?: TypographyProps['color'];
-  $style?: TypographyProps['style'];
-  $underline?: TypographyProps['underline'];
-  $bold?: TypographyProps['bold'];
-  $display?: TypographyProps['display'];
-  $gutter?: TypographyProps['gutter'];
-  $align?: TypographyProps['align'];
-  $ellipsis?: TypographyProps['ellipsis'];
-  $textParagraph?: TypographyProps['textParagraph'];
+interface StyledTextProps {
+  $color?: TextProps['color'];
+  $style?: TextProps['style'];
+  $underline?: TextProps['underline'];
+  $bold?: TextProps['bold'];
+  $display?: TextProps['display'];
+  $gutter?: TextProps['gutter'];
+  $align?: TextProps['align'];
+  $ellipsis?: TextProps['ellipsis'];
+  $textParagraph?: TextProps['textParagraph'];
 }
 
 const withEllipsis = css`
@@ -102,7 +102,7 @@ const Subtitle1 = css`
   letter-spacing: var(--subtitle1-letter-spacing);
 `;
 
-const StyledTypography = styled.span<StyledTypographyProps>`
+const StyledText = styled.span<StyledTextProps>`
   font-family: var(--default-font-family);
   margin: 0;
   display: ${props => (props.$display ? props.$display : `inherit`)};
@@ -127,12 +127,12 @@ const StyledTypography = styled.span<StyledTypographyProps>`
   ${props => props.$style === 'caption' && Caption}
 `;
 
-export const Typography = React.forwardRef<HTMLSpanElement, TypographyProps>(
+export const Text = React.forwardRef<HTMLSpanElement, TextProps>(
   ({ ...props }, ref) => {
     return (
       <>
         <GlobalStyle />
-        <StyledTypography
+        <StyledText
           ref={ref}
           $color={props.color || 'primaryText'}
           $style={props.style || 'subtitle1'}
@@ -146,7 +146,7 @@ export const Typography = React.forwardRef<HTMLSpanElement, TypographyProps>(
           as={props.style}
         >
           {props.children}
-        </StyledTypography>
+        </StyledText>
       </>
     );
   }

@@ -1,14 +1,14 @@
 import React from 'react';
-import { Typography, TypographyProps } from '../src';
+import { Text, TextProps } from '../src';
 import { Story, Meta } from '@storybook/react';
 
 export default {
   title: 'Example/Typography',
-  component: Typography,
+  component: Text,
   argTypes: { backgroundColor: { control: 'color' } },
 } as Meta;
 
-const Template: Story<TypographyProps> = args => {
+const Template: Story<TextProps> = args => {
   return (
     <div
       style={{
@@ -19,7 +19,7 @@ const Template: Story<TypographyProps> = args => {
         padding: '10px',
       }}
     >
-      <Typography {...args} />
+      <Text {...args} />
     </div>
   );
 };
