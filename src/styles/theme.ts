@@ -94,8 +94,11 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 0.875rem;
     line-height: 1.75;
     letter-spacing: 0.02857em;
-    text-transform: uppercase;
     cursor: pointer;
+    :disabled{
+      cursor: not-allowed;
+      pointer-events: all !important;
+    }
   }
   
   
