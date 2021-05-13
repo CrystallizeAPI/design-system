@@ -17,19 +17,6 @@ export interface TextProps {
     | 'body2'
     | 'caption'
     | 'overline';
-  style?:
-    | 'h1'
-    | 'h2'
-    | 'h3'
-    | 'h4'
-    | 'h5'
-    | 'h6'
-    | 'subtitle1'
-    | 'subtitle2'
-    | 'body1'
-    | 'body2'
-    | 'caption'
-    | 'overline';
   underline?: boolean;
   weight?: 'normal' | 'bold' | 'bolder' | 'lighter' | 'number';
   display?: 'inline' | 'block' | 'inherit';
@@ -37,7 +24,7 @@ export interface TextProps {
   align?: 'left' | 'right' | 'center' | 'justify' | 'initial' | 'inherit';
   ellipsis?: boolean;
   textParagraph?: boolean;
-  children?: React.ReactNode;
+  children?: JSX.Element | JSX.Element[];
 }
 
 /**
@@ -47,7 +34,6 @@ export interface TextProps {
  **/
 interface StyledTextProps {
   $color?: TextProps['color'];
-  $style?: TextProps['style'];
   $size?: TextProps['size'];
   $underline?: TextProps['underline'];
   $weight?: TextProps['weight'];
@@ -56,6 +42,7 @@ interface StyledTextProps {
   $align?: TextProps['align'];
   $ellipsis?: TextProps['ellipsis'];
   $textParagraph?: TextProps['textParagraph'];
+  children?: JSX.Element | JSX.Element[];
 }
 
 const withEllipsis = css`
@@ -141,13 +128,13 @@ const StyledText = styled.span<StyledTextProps>`
 `;
 
 const sizeToHeading: Record<string, string> = {
-  0: 'p',
-  1: 'h1',
-  2: 'h2',
-  3: 'h3',
-  4: 'h4',
-  5: 'h5',
-  6: 'h6',
+  '0': 'p',
+  '1': 'h1',
+  '2': 'h2',
+  '3': 'h3',
+  '4': 'h4',
+  '5': 'h5',
+  '6': 'h6',
 };
 
 export const Text = React.forwardRef<HTMLSpanElement, TextProps>(
@@ -158,16 +145,15 @@ export const Text = React.forwardRef<HTMLSpanElement, TextProps>(
         <StyledText
           ref={ref}
           $color={props.color || 'primaryText'}
-          $style={props.style || 'subtitle1'} //TODO: remove
-          $size={props.size || 'subtitle1'}
+          $size={props.size || '6'}
           $display={props.display || 'inherit'}
           $gutter={props.gutter || false}
           $align={props.align || 'inherit'}
           $ellipsis={props.ellipsis || false}
           $textParagraph={props.textParagraph || false}
           $underline={props.underline || false}
-          $weight={props.weight || 'normal'}
-          as={sizeToHeading[props.size || 0] || 'p'}
+          $weight={props.weight || 'normal'} // @ts-ignore
+          as={props.size ? sizeToHeading[props.size] : 'p'}
         >
           {props.children}
         </StyledText>
