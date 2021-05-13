@@ -68,11 +68,12 @@ H6.args = {
   color: 'primary',
 };
 
-export const Subtitle1 = Template.bind({});
-Subtitle1.args = {
+export const Subtitle1WithWeight = Template.bind({});
+Subtitle1WithWeight.args = {
   children: 'Enhances user experience with webhooks',
   size: 'subtitle1',
   color: 'primaryText',
+  weight: 'bolder'
 };
 
 export const Subtitle2 = Template.bind({});

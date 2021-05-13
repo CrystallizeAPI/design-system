@@ -144,14 +144,14 @@ export const Text = React.forwardRef<HTMLSpanElement, TextProps>(
         <StyledText
           ref={ref}
           $color={props.color || 'primaryText'}
-          $size={props.size || '6'}
+          $size={props.size || 'subtitle1'}
           $display={props.display || 'inherit'}
           $gutter={props.gutter || false}
           $align={props.align || 'inherit'}
           $ellipsis={props.ellipsis || false}
           $textParagraph={props.textParagraph || false}
           $underline={props.underline || false}
-          $weight={props.weight || 'normal'}
+          $weight={props.weight}
           as={props.size ? sizeToHeading[props.size] : 'p'}
         >
           {props.children}
