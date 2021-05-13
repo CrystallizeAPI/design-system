@@ -4,7 +4,7 @@ import { GlobalStyle } from '../styles/theme';
 
 export interface TextProps {
   color?: 'primary' | 'secondary' | 'primaryText' | 'secondaryText' | 'error';
-  size?:
+  size:
     | '1'
     | '2'
     | '3'
@@ -24,7 +24,7 @@ export interface TextProps {
   align?: 'left' | 'right' | 'center' | 'justify' | 'initial' | 'inherit';
   ellipsis?: boolean;
   textParagraph?: boolean;
-  children?: JSX.Element | JSX.Element[];
+  children?: React.ReactNode;
 }
 
 /**
@@ -42,7 +42,6 @@ interface StyledTextProps {
   $align?: TextProps['align'];
   $ellipsis?: TextProps['ellipsis'];
   $textParagraph?: TextProps['textParagraph'];
-  children?: JSX.Element | JSX.Element[];
 }
 
 const withEllipsis = css`
@@ -127,7 +126,7 @@ const StyledText = styled.span<StyledTextProps>`
   ${props => props.$size === 'caption' && Caption}
 `;
 
-const sizeToHeading: Record<string, string> = {
+const sizeToHeading: Record<string, React.ElementType> = {
   '0': 'p',
   '1': 'h1',
   '2': 'h2',
@@ -152,7 +151,7 @@ export const Text = React.forwardRef<HTMLSpanElement, TextProps>(
           $ellipsis={props.ellipsis || false}
           $textParagraph={props.textParagraph || false}
           $underline={props.underline || false}
-          $weight={props.weight || 'normal'} // @ts-ignore
+          $weight={props.weight || 'normal'}
           as={props.size ? sizeToHeading[props.size] : 'p'}
         >
           {props.children}
