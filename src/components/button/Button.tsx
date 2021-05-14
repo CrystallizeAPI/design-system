@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { GlobalStyle, getRemSize } from '../styles/theme';
+import { GlobalStyle, getRemSize } from '../../styles/theme';
 
 export interface ButtonProps {
   color?: 'primary' | 'secondary' | 'default';
@@ -10,7 +10,7 @@ export interface ButtonProps {
   fullWidth?: boolean;
   disabled?: boolean;
   children?: React.ReactNode;
-  isLoading?: boolean;
+  loading?: boolean;
   loadingText?: string;
 }
 
@@ -26,6 +26,8 @@ interface StyledButtonProps {
   $onClick?: () => ButtonProps['onClick'];
   $fullWidth?: ButtonProps['fullWidth'];
   disabled?: boolean;
+  $loading?: ButtonProps['loading'];
+  $loadingText?: ButtonProps['loadingText'];
 }
 
 const outlined = css`
@@ -122,6 +124,10 @@ const filledSecondary = css`
   }
 `;
 
+const loadingWithText = `
+
+`
+
 const StyledButton = styled.button<StyledButtonProps>`
   border-style: none;
   outline: 0;
@@ -129,6 +135,8 @@ const StyledButton = styled.button<StyledButtonProps>`
   padding: 6px 16px;
   color: var(--palette-text-primary);
   background-color: transparent;
+  
+  ${props => props.$loading && props.$loadingText && loadingWithText}
 
       /* color=primary and variant=text*/
     ${props =>
