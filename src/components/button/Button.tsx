@@ -129,6 +129,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   padding: 6px 16px;
   color: var(--palette-text-primary);
   background-color: transparent;
+  width: auto;
   
       /* color=primary and variant=text*/
     ${props =>
@@ -216,17 +217,11 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           {...props}
         >
           {!props.loading && props.children}
-          {props.loading && <ButtonLoading />}
+          {props.loading && (
+            <Loader bgColor="gray" label={props.loadingText} width={'2px'} />
+          )}
         </StyledButton>
       </>
     );
   }
 );
-
-export const ButtonLoading: React.FC = () => {
-  return (
-    <div>
-      <Loader bgColor="gray" label={'Loading'} width={'2px'} />
-    </div>
-  );
-};
