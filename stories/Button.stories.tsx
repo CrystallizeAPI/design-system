@@ -46,29 +46,29 @@ DefaultTextButton.args = {
 
 export const LargeText = Template.bind({});
 LargeText.args = {
-  size: 'large',
-  children: 'Large text',
+  size: '2',
+  children: 'ADD',
   color: 'secondary',
 };
 
 export const SmallText = Template.bind({});
 SmallText.args = {
-  size: 'small',
-  children: 'Small text',
+  size: '0',
+  children: 'Checkout',
   color: 'secondary',
 };
 
 export const DisabledButton = Template.bind({});
 DisabledButton.args = {
-  size: 'small',
-  children: 'I am Disabled',
+  size: '0',
+  children: 'Disabled',
   disabled: true,
 };
 
 export const FullWidthButton = Template.bind({});
 FullWidthButton.args = {
-  size: 'medium',
-  children: 'Full Width',
+  size: '1',
+  children: 'FullWidth',
   fullWidth: true,
   color: 'primary',
   variant: 'filled',
@@ -76,27 +76,27 @@ FullWidthButton.args = {
 
 export const FilledDefault = Template.bind({});
 FilledDefault.args = {
-  children: 'Filled Default',
+  children: 'Contact Us',
   variant: 'filled',
 };
 
 export const FilledPrimary = Template.bind({});
 FilledPrimary.args = {
-  children: 'Filled Primary',
+  children: 'Checkout items',
   variant: 'filled',
   color: 'primary',
 };
 
 export const FilledSecondaryMedium = Template.bind({});
 FilledSecondaryMedium.args = {
-  children: 'Filled Secondary',
+  children: 'Add to cart',
   variant: 'filled',
   color: 'secondary',
 };
 
 export const FilledSecondarySmall = Template.bind({});
 FilledSecondarySmall.args = {
-  size: 'small',
+  size: '0',
   children: '+ Create webhook',
   variant: 'filled',
   color: 'secondary',
@@ -104,7 +104,7 @@ FilledSecondarySmall.args = {
 
 export const FilledSecondaryLarge = Template.bind({});
 FilledSecondaryLarge.args = {
-  size: 'large',
+  size: '2',
   children: '+ Create webhook',
   variant: 'filled',
   color: 'secondary',
@@ -112,7 +112,7 @@ FilledSecondaryLarge.args = {
 
 export const OutlinedDefault = Template.bind({});
 OutlinedDefault.args = {
-  children: 'Outlined',
+  children: 'Cancel',
   variant: 'outlined',
 };
 

@@ -5,7 +5,7 @@ import { GlobalStyle, getRemSize } from '../styles/theme';
 export interface ButtonProps {
   color?: 'primary' | 'secondary' | 'default';
   variant?: 'filled' | 'outlined' | 'text';
-  size?: 'small' | 'medium' | 'large';
+  size?: '0' | '1' | '2';
   onClick?: () => void;
   fullWidth?: boolean;
   disabled?: boolean;
@@ -156,7 +156,7 @@ const StyledButton = styled.button<StyledButtonProps>`
 
       /* size=small*/
     ${props =>
-      props.$size === 'small' &&
+      props.$size === '0' &&
       css`
         padding: 6px 12px;
         font-size: ${getRemSize(13)}rem;
@@ -164,7 +164,7 @@ const StyledButton = styled.button<StyledButtonProps>`
 
       /* size=large*/
     ${props =>
-      props.$size === 'large' &&
+      props.$size === '2' &&
       css`
         padding: 8px 14px;
         font-size: ${getRemSize(15)}rem;
@@ -213,7 +213,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         <StyledButton
           ref={ref}
           $color={props.color || 'default'}
-          $size={props.size || 'medium'}
+          $size={props.size || '1'}
           $fullWidth={props.fullWidth || false}
           disabled={props.disabled || false}
           $variant={props.variant || 'text'}
