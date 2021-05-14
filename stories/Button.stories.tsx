@@ -27,6 +27,15 @@ const Template: Story<ButtonProps> = args => {
   );
 };
 
+export const LoadingFilled = Template.bind({});
+LoadingFilled.args = {
+  children: 'Primary Text',
+  color: 'primary',
+  variant: 'filled',
+  loading: true,
+  size: '2',
+};
+
 export const PrimaryTextButton = Template.bind({});
 PrimaryTextButton.args = {
   children: 'Primary Text',

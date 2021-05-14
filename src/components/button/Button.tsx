@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { GlobalStyle, getRemSize } from '../../styles/theme';
+import { Loader } from './Loading';
 
 export interface ButtonProps {
   color?: 'primary' | 'secondary' | 'default';
@@ -126,7 +127,7 @@ const filledSecondary = css`
 
 const loadingWithText = `
 
-`
+`;
 
 const StyledButton = styled.button<StyledButtonProps>`
   border-style: none;
@@ -229,9 +230,28 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           $variant={props.variant || 'text'}
           {...props}
         >
-          {props.children}
+          {!props.loading && props.children}
+          {props.loading && <ButtonLoading />}
         </StyledButton>
       </>
     );
   }
 );
+
+export const ButtonLoading: React.FC = () => {
+  return (
+    <div
+      // style={{
+      //   display: 'flex',
+      //   alignItems: 'center',
+      //   justifyContent: 'center',
+      //   position: 'absolute',
+      //   margin: '0',
+      //   fontSize: '1em',
+      //   lineHeight: 'normal',
+      // }}
+    >
+      <Loader bgColor="gray" label={'Loading'} width={'2px'}/>
+    </div>
+  );
+};
