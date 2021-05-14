@@ -41,7 +41,6 @@ const outlined = css`
   }
   &:disabled {
     border: 1px solid var(--palette-action-disabled);
-    background-color: var(--palette-action-disabled);
   }
 `;
 
@@ -57,9 +56,8 @@ const outlinedPrimary = css`
     box-shadow: var(--shadow-05);
   }
   &:disabled {
-    border: 1px solid var(--palette-action-disabled);
-    color: var(--palette-text-disabled);
-    background-color: var(--palette-action-disabled);
+    border: 1px solid var(--palette-primary-dark);
+    background-color: var(--palette-primary-400);
   }
 `;
 
@@ -74,9 +72,8 @@ const outlinedSecondary = css`
     box-shadow: var(--shadow-02);
   }
   &:disabled {
-    border: 1px solid var(--palette-action-disabled);
-    color: var(--palette-text-disabled);
-    background-color: var(--palette-action-disabled);
+    border: 1px solid var(--palette-secondary-dark);
+    background-color: var(--palette-secondary-400);
   }
 `;
 
@@ -109,7 +106,7 @@ const filledPrimary = css`
     background-color: var(--palette-primary-dark);
   }
   &:disabled {
-    background-color: var(--palette-action-disabled);
+    background-color: var(--palette-primary-light);
   }
 `;
 
@@ -121,12 +118,8 @@ const filledSecondary = css`
     background-color: var(--palette-secondary-dark);
   }
   &:disabled {
-    background-color: var(--palette-action-disabled);
+    background-color: var(--palette-secondary-main);
   }
-`;
-
-const loadingWithText = `
-
 `;
 
 const StyledButton = styled.button<StyledButtonProps>`
@@ -137,8 +130,6 @@ const StyledButton = styled.button<StyledButtonProps>`
   color: var(--palette-text-primary);
   background-color: transparent;
   
-  ${props => props.$loading && props.$loadingText && loadingWithText}
-
       /* color=primary and variant=text*/
     ${props =>
       props.$color === 'primary' &&
@@ -148,7 +139,7 @@ const StyledButton = styled.button<StyledButtonProps>`
           background-color: var(--palette-primary-400);
         }
         &:disabled {
-          background-color: transparent;
+          background-color: var(--palette-primary-400);
         }
       `}
 
@@ -192,12 +183,6 @@ const StyledButton = styled.button<StyledButtonProps>`
         width: 100%;
       `};
     ${props =>
-      props.disabled &&
-      css`
-        color: var(--palette-text-disabled);
-        box-shadow: var(--shadow-none);
-      `};
-    ${props =>
       props.$variant === 'outlined' &&
       props.$color === 'primary' &&
       outlinedPrimary};
@@ -226,7 +211,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           $color={props.color || 'default'}
           $size={props.size || '1'}
           $fullWidth={props.fullWidth || false}
-          disabled={props.disabled || false}
+          disabled={props.loading || props.disabled}
           $variant={props.variant || 'text'}
           {...props}
         >

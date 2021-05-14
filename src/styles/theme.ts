@@ -98,6 +98,8 @@ export const GlobalStyle = createGlobalStyle`
     :disabled{
       cursor: not-allowed;
       pointer-events: all !important;
+      color: var(--palette-text-disabled);
+      box-shadow: var(--shadow-none);
     }
   }
   
@@ -134,7 +136,7 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: var(--font-weight-regular);
     font-size: 1.5rem;
     line-height: 1.334;
-    letter-spacing: 0em;
+    letter-spacing: 0;
   }
 
   h6 {
