@@ -11,9 +11,9 @@ const spin = keyframes`
 `;
 
 interface LoadingProps {
-  emptyColor?: string;
+  bgColor?: string;
   color?: string;
-  thickness?: string;
+  width?: string;
   speed?: string;
   label?: string;
 }
@@ -23,21 +23,21 @@ const StyledLoader = styled.div<LoadingProps>`
   border-color: pink;
   border-style: solid;
   border-radius: 99999px;
-  border-width: ${props => props.thickness};
-  border-bottom-color: ${props => props.emptyColor};
-  border-left-color: ${props => props.emptyColor};
+  border-width: ${props => props.width};
+  border-bottom-color: ${props => props.bgColor};
+  border-left-color: ${props => props.bgColor};
   animation: ${spin} ${props => props.speed} linear infinite;
 `;
 
-export const Loader = React.forwardRef<LoadingProps, HTMLDivElement>(
+export const Loader = React.forwardRef<HTMLDivElement, LoadingProps>(
   (props, ref) => {
     return (
       <StyledLoader
         ref={ref}
         label={props.label || 'Loading...'}
-        thickness={props.thickness || '2px'}
+        width={props.width || '2px'}
         speed={props.speed || '0.45s'}
-        emptyColor={props.emptyColor || 'transparent'}
+        bgColor={props.bgColor || 'transparent'}
       />
     );
   }
