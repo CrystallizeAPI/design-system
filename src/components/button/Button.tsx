@@ -240,18 +240,8 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
 export const ButtonLoading: React.FC = () => {
   return (
-    <div
-      // style={{
-      //   display: 'flex',
-      //   alignItems: 'center',
-      //   justifyContent: 'center',
-      //   position: 'absolute',
-      //   margin: '0',
-      //   fontSize: '1em',
-      //   lineHeight: 'normal',
-      // }}
-    >
-      <Loader bgColor="gray" label={'Loading'} width={'2px'}/>
+    <div>
+      <Loader bgColor="gray" label={'Loading'} width={'2px'} />
     </div>
   );
 };
