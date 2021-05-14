@@ -92,6 +92,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: var(--default-font-family);
     font-weight: var(--font-weight-medium);
     font-size: 0.875rem;
+    line-height: 1.2;
     letter-spacing: 0.02857em;
     cursor: pointer;
     :disabled{

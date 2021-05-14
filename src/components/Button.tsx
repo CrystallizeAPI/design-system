@@ -10,6 +10,8 @@ export interface ButtonProps {
   fullWidth?: boolean;
   disabled?: boolean;
   children?: React.ReactNode;
+  isLoading?: boolean;
+  loadingText?: string;
 }
 
 /**
