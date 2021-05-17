@@ -13,6 +13,7 @@ export interface ButtonProps {
   children?: React.ReactNode;
   loading?: boolean;
   loadingText?: string;
+  icon?: React.ReactNode;
 }
 
 /**
@@ -29,6 +30,7 @@ interface StyledButtonProps {
   disabled?: boolean;
   $loading?: ButtonProps['loading'];
   $loadingText?: ButtonProps['loadingText'];
+  $icon?: ButtonProps['icon'];
 }
 
 const outlined = css`
@@ -218,10 +220,24 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         >
           {!props.loading && props.children}
           {props.loading && (
-            <Loader bgColor="gray" label={props.loadingText} width={'2px'} />
+            <Loader
+              bgColor="gray"
+              label={props.loadingText || 'Submitting'}
+              width={'2px'}
+            />
           )}
+          {props.icon && !props.loading && <IconButton icon={props.icon} />}
         </StyledButton>
       </>
     );
   }
 );
+
+const StyledIcon = styled.span`
+  display: inline-flex;
+  align-self: center;
+  flex-shrink: 0;
+  margin-right: 0.5em;
+`;
+
+const IconButton: React.FC = ({ icon }) => <StyledIcon>{icon}</StyledIcon>;
