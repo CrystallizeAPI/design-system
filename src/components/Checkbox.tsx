@@ -39,6 +39,11 @@ const CheckboxRoot = styled.div`
   position: relative;
 `;
 
+const stylesSmallSize = css`
+  width: 14px;
+  height: 14px;
+`;
+
 const Box = styled.span<CustomCheckboxProps>`
   align-items: center;
   border: ${props =>
@@ -50,17 +55,13 @@ const Box = styled.span<CustomCheckboxProps>`
   justify-content: center;
   position: relative;
   z-index: 1;
+  ${stylesSmallSize}
 
   &[disabled] {
     opacity: var(--opacity-disabled);
   }
 
-  ${props =>
-    props.size === checkboxSizes.small &&
-    css`
-      width: 14px;
-      height: 14px;
-    `}
+  ${props => props.size === checkboxSizes.small && stylesSmallSize}
 
   ${props =>
     props.size === checkboxSizes.medium &&
