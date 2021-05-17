@@ -45,10 +45,20 @@ const stylesSmallSize = css`
 `;
 
 const Box = styled.span<CustomCheckboxProps>`
+  --color: ${props =>
+    props.color
+      ? `${getColorVariants(props.color).main}`
+      : `${theme.palette.primary.main}`};
+
+  --color-dark: ${props =>
+    props.color
+      ? `${getColorVariants(props.color).dark}`
+      : `${theme.palette.primary.dark}`};
+
   align-items: center;
   border: ${props =>
     props.checked && props.color
-      ? `2px solid ${getColorVariants(props.color).main}`
+      ? '2px solid var(--color)'
       : `2px solid ${theme.palette.action.disabled}`};
   border-radius: 4px;
   display: inline-flex;
@@ -89,8 +99,7 @@ const Box = styled.span<CustomCheckboxProps>`
     transition: transform 100ms, opacity 100ms;
     width: var(--inner-size);
 
-    ${props =>
-      props.color && `background-color: ${getColorVariants(props.color).main}`};
+    ${props => props.color && `var(--color)`};
 
     &[disabled] {
       opacity: var(--opacity-disabled);
@@ -99,7 +108,15 @@ const Box = styled.span<CustomCheckboxProps>`
 `;
 
 function getColorVariants(color: ColorType) {
-  return theme.palette[color];
+  // @ts-ignore
+  if (color && color !== 'undefined') {
+    return theme.palette[color];
+  }
+
+  return {
+    main: theme.palette.primary.main,
+    dark: theme.palette.primary.dark,
+  };
 }
 
 const Input = styled.input<CheckboxProps>`
@@ -123,15 +140,15 @@ const Input = styled.input<CheckboxProps>`
       ${p =>
         p.color && p.checked
           ? css`
-              border: 2px solid ${getColorVariants(p.color).dark};
+              border: 2px solid var(--color-dark);
               &:after {
-                background-color: ${getColorVariants(p.color).dark};
+                background-color: var(--color-dark);
               }
             `
           : p.color &&
             !p.checked &&
             css`
-              border: 2px solid ${getColorVariants(p.color).main};
+              border: 2px solid var(--color);
             `}
     }
   }
