@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { GlobalStyle, getRemSize } from '../../styles/theme';
-import { Loader } from './Loading';
+import { Loader } from './Loader';
 
 export interface ButtonProps {
   color?: 'primary' | 'secondary' | 'default';
@@ -13,7 +13,7 @@ export interface ButtonProps {
   children?: React.ReactNode;
   loading?: boolean;
   loadingText?: string;
-  icon?: React.ReactNode;
+  icon?: string;
 }
 
 /**
@@ -220,11 +220,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         >
           {!props.loading && props.children}
           {props.loading && (
-            <Loader
-              bgColor="gray"
-              label={props.loadingText || 'Submitting'}
-              width={'2px'}
-            />
+            <Loader bgColor="gray" label={props.loadingText} width={'2px'} />
           )}
           {props.icon && !props.loading && <IconButton icon={props.icon} />}
         </StyledButton>
@@ -237,7 +233,15 @@ const StyledIcon = styled.span`
   display: inline-flex;
   align-self: center;
   flex-shrink: 0;
-  margin-right: 0.5em;
+  //margin-right: 0.5em;
 `;
 
-const IconButton: React.FC = ({ icon }) => <StyledIcon>{icon}</StyledIcon>;
+interface ButtonIconProps {
+  icon: string;
+}
+
+const IconButton: React.FC<ButtonIconProps> = ({ icon }: ButtonIconProps) => (
+  <StyledIcon>
+    <img alt={'test'} src={icon} style={{ height: '5vh', width: '5vw' }} />
+  </StyledIcon>
+);

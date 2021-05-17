@@ -2,8 +2,8 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Button, ButtonProps } from '../src';
-// import Msg from './assets/dm.png';
-import Code from './assets/dm.png';
+// @ts-ignore
+import Msg from './assets/dm.svg';
 
 export default {
   title: 'Example/Button',
@@ -150,7 +150,7 @@ OutlinedDisabled.args = {
 
 export const IconButton = Template.bind({});
 IconButton.args = {
-  children: 'Button with icon',
+  children: 'Button ',
   variant: 'outlined',
-  icon: Code,
+  icon: Msg,
 };

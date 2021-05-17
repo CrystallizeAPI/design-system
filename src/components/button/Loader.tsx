@@ -31,7 +31,7 @@ const StyledLoader = styled.div<LoadingProps>`
   animation: ${spin} ${props => props.speed} linear infinite;
 `;
 
-const HiddenLabel = styled.span`
+const LoadingLabel = styled.span`
   border: 0;
   clip: rect(0px, 0px, 0px, 0px);
   margin-left: 0.3em;
@@ -58,7 +58,7 @@ export const Loader = React.forwardRef<HTMLDivElement, LoadingProps>(
           bgColor={props.bgColor || 'transparent'}
           color={props.color}
         />
-        {props.label && <HiddenLabel>{props.label}</HiddenLabel>}
+        {props.label && <LoadingLabel>{props.label}</LoadingLabel>}
       </div>
     );
   }
