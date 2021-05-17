@@ -29,46 +29,46 @@ const Template: Story<ButtonProps> = args => {
 
 export const PrimaryTextButton = Template.bind({});
 PrimaryTextButton.args = {
+  children: 'Primary Text',
   color: 'primary',
-  label: 'CREATE A DOCUMENT',
 };
 
 export const SecondaryTextButton = Template.bind({});
 SecondaryTextButton.args = {
-  label: 'Create a product',
+  children: 'Secondary Text',
   color: 'secondary',
 };
 
 export const DefaultTextButton = Template.bind({});
 DefaultTextButton.args = {
-  label: '+ Add description',
+  children: '+ Add description',
 };
 
 export const LargeText = Template.bind({});
 LargeText.args = {
   size: 'large',
-  label: 'Large text',
+  children: 'Large text',
   color: 'secondary',
 };
 
 export const SmallText = Template.bind({});
 SmallText.args = {
   size: 'small',
-  label: 'Small text',
+  children: 'Small text',
   color: 'secondary',
 };
 
 export const DisabledButton = Template.bind({});
 DisabledButton.args = {
   size: 'small',
-  label: 'I am Disabled',
+  children: 'I am Disabled',
   disabled: true,
 };
 
 export const FullWidthButton = Template.bind({});
 FullWidthButton.args = {
   size: 'medium',
-  label: 'Full Width',
+  children: 'Full Width',
   fullWidth: true,
   color: 'primary',
   variant: 'filled',
@@ -76,20 +76,20 @@ FullWidthButton.args = {
 
 export const FilledDefault = Template.bind({});
 FilledDefault.args = {
-  label: 'Filled Default',
+  children: 'Filled Default',
   variant: 'filled',
 };
 
 export const FilledPrimary = Template.bind({});
 FilledPrimary.args = {
-  label: 'Filled Primary',
+  children: 'Filled Primary',
   variant: 'filled',
   color: 'primary',
 };
 
 export const FilledSecondaryMedium = Template.bind({});
 FilledSecondaryMedium.args = {
-  label: 'Filled Secondary',
+  children: 'Filled Secondary',
   variant: 'filled',
   color: 'secondary',
 };
@@ -97,7 +97,7 @@ FilledSecondaryMedium.args = {
 export const FilledSecondarySmall = Template.bind({});
 FilledSecondarySmall.args = {
   size: 'small',
-  label: '+ Create webhook',
+  children: '+ Create webhook',
   variant: 'filled',
   color: 'secondary',
 };
@@ -105,34 +105,34 @@ FilledSecondarySmall.args = {
 export const FilledSecondaryLarge = Template.bind({});
 FilledSecondaryLarge.args = {
   size: 'large',
-  label: '+ Create webhook',
+  children: '+ Create webhook',
   variant: 'filled',
   color: 'secondary',
 };
 
 export const OutlinedDefault = Template.bind({});
 OutlinedDefault.args = {
-  label: 'Outlined',
+  children: 'Outlined',
   variant: 'outlined',
 };
 
 export const OutlinedPrimary = Template.bind({});
 OutlinedPrimary.args = {
-  label: 'Outlined Primary',
+  children: 'Outlined Primary',
   color: 'primary',
   variant: 'outlined',
 };
 
 export const OutlinedSecondary = Template.bind({});
 OutlinedSecondary.args = {
-  label: 'Outlined Secondary',
+  children: 'Outlined Secondary',
   color: 'secondary',
   variant: 'outlined',
 };
 
 export const OutlinedDisabled = Template.bind({});
 OutlinedDisabled.args = {
-  label: 'Outlined Disabled',
+  children: 'Outlined Disabled',
   variant: 'outlined',
   disabled: true,
 };

@@ -1,4 +1,5 @@
 {
+  "name": "@crystallize/design-system",
   "version": "0.0.0-development",
   "license": "MIT",
   "main": "dist/index.js",
@@ -7,7 +8,7 @@
     "dist"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "scripts": {
     "start": "tsdx watch",
@@ -36,17 +37,16 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "crystallize-design-system",
   "author": "Deeksha Sharma",
-  "module": "dist/crystallize-design-system.esm.js",
+  "module": "dist/ui.esm.js",
   "private": false,
   "size-limit": [
     {
-      "path": "dist/crystallize-design-system.cjs.production.min.js",
+      "path": "dist/ui.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/crystallize-design-system.esm.js",
+      "path": "dist/ui.esm.js",
       "limit": "10 KB"
     }
   ],
@@ -82,7 +82,8 @@
   },
   "release": {
     "branches": [
-      "main"
+      "main",
+      "beta"
     ]
   }
 }
