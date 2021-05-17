@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { theme } from '../styles/theme';
+import { GlobalStyle } from '../styles/theme';
 
 type ColorType = 'primary' | 'secondary';
 type CheckboxSizeType = 'small' | 'medium' | 'large';
@@ -39,53 +39,50 @@ const CheckboxRoot = styled.div`
   position: relative;
 `;
 
-const stylesSmallSize = css`
+const smallSize = css`
   width: 14px;
   height: 14px;
 `;
 
-const Box = styled.span<CustomCheckboxProps>`
-  --color: ${props =>
-    props.color
-      ? `${getColorVariants(props.color).main}`
-      : `${theme.palette.primary.main}`};
+const mediumSize = css`
+  width: 24px;
+  height: 24px;
+`;
 
-  --color-dark: ${props =>
-    props.color
-      ? `${getColorVariants(props.color).dark}`
-      : `${theme.palette.primary.dark}`};
+const largeSize = css`
+  width: 32px;
+  height: 32px;
+`;
+
+const secondaryColor = css`
+  --checkbox-color: var(--palette-secondary-main);
+  --checkbox-color-dark: var(--palette-secondary-dark);
+`;
+
+const Box = styled.span<CustomCheckboxProps>`
+  --checkbox-color: var(--palette-primary-main);
+  --checkbox-color-dark: var(--palette-primary-dark);
 
   align-items: center;
   border: ${props =>
-    props.checked && props.color
-      ? '2px solid var(--color)'
-      : `2px solid ${theme.palette.action.disabled}`};
+    props.checked
+      ? '2px solid var(--checkbox-color)'
+      : '2px solid var(--palette-action-disabled)'};
   border-radius: 4px;
   display: inline-flex;
   justify-content: center;
   position: relative;
   z-index: 1;
-  ${stylesSmallSize}
+
+  ${smallSize}
+  ${props => props.size === checkboxSizes.small && smallSize}
+  ${props => props.size === checkboxSizes.medium && mediumSize}
+  ${props => props.size === checkboxSizes.large && largeSize}
+  ${props => props.color === 'secondary' && secondaryColor}
 
   &[disabled] {
     opacity: var(--opacity-disabled);
   }
-
-  ${props => props.size === checkboxSizes.small && stylesSmallSize}
-
-  ${props =>
-    props.size === checkboxSizes.medium &&
-    css`
-      width: 24px;
-      height: 24px;
-    `}
-
-  ${props =>
-    props.size === checkboxSizes.large &&
-    css`
-      width: 32px;
-      height: 32px;
-    `}
 
   // We create an inner box
   &::after {
@@ -99,26 +96,11 @@ const Box = styled.span<CustomCheckboxProps>`
     transition: transform 100ms, opacity 100ms;
     width: var(--inner-size);
 
-    ${props => props.color && `var(--color)`};
-
     &[disabled] {
       opacity: var(--opacity-disabled);
     }
   }
 `;
-
-function getColorVariants(color: ColorType) {
-  // TS ignore is required. Color can never have "undefined" value, but is what storybook passes.
-  // @ts-ignore
-  if (color && color !== 'undefined') {
-    return theme.palette[color];
-  }
-
-  return {
-    main: theme.palette.primary.main,
-    dark: theme.palette.primary.dark,
-  };
-}
 
 const Input = styled.input<CheckboxProps>`
   appearance: none;
@@ -136,54 +118,66 @@ const Input = styled.input<CheckboxProps>`
     pointer-events: none;
   }
 
+  &[checked] {
+    + ${Box} {
+      &:after {
+        background-color: var(--checkbox-color);
+      }
+    }
+  }
+
   &:hover {
     + ${Box} {
       ${p =>
-        p.color && p.checked
+        p.checked
           ? css`
-              border: 2px solid var(--color-dark);
+              border: 2px solid var(--checkbox-color-dark);
               &:after {
-                background-color: var(--color-dark);
+                background-color: var(--checkbox-color-dark);
               }
             `
-          : p.color &&
-            !p.checked &&
+          : !p.checked &&
             css`
-              border: 2px solid var(--color);
+              border: 2px solid var(--checkbox-color);
             `}
     }
   }
 `;
 
 export const Checkbox: React.FC<CheckboxProps> = ({
-  color = checkboxColors.primary,
   checked = false,
+  color = 'primary',
   disabled = false,
   id,
   name,
   onChange,
-  size = checkboxSizes.medium,
+  size = 'small',
   ...props
 }) => {
-  const commonProps = {
-    'data-checked': checked,
-    checked: checked,
-    color: color,
-    disabled: disabled,
-  };
-
   return (
-    <CheckboxRoot>
-      <Input
-        aria-checked={checked}
-        id={id}
-        name={name}
-        onChange={onChange}
-        type="checkbox"
-        {...commonProps}
-        {...props}
-      />
-      <Box {...commonProps} size={size} />
-    </CheckboxRoot>
+    <>
+      <GlobalStyle />
+      <CheckboxRoot>
+        <Input
+          aria-checked={checked}
+          checked={checked}
+          color={color}
+          data-checked={checked}
+          disabled={disabled}
+          id={id}
+          name={name}
+          onChange={onChange}
+          type="checkbox"
+          {...props}
+        />
+        <Box
+          checked={checked}
+          color={color}
+          data-checked={checked}
+          disabled={disabled}
+          size={size}
+        />
+      </CheckboxRoot>
+    </>
   );
 };
