@@ -118,13 +118,15 @@ const Input = styled.input<CheckboxProps>`
     pointer-events: none;
   }
 
-  &[checked] {
-    + ${Box} {
-      &:after {
-        background-color: var(--checkbox-color);
+  ${p =>
+    p.checked &&
+    css`
+      + ${Box} {
+        &:after {
+          background-color: var(--checkbox-color);
+        }
       }
-    }
-  }
+    `}
 
   &:hover {
     + ${Box} {
