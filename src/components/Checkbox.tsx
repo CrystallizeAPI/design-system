@@ -108,6 +108,7 @@ const Box = styled.span<CustomCheckboxProps>`
 `;
 
 function getColorVariants(color: ColorType) {
+  // TS ignore is required. Color can never have "undefined" value, but is what storybook passes.
   // @ts-ignore
   if (color && color !== 'undefined') {
     return theme.palette[color];
