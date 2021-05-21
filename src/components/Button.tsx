@@ -128,7 +128,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   color: var(--palette-text-primary);
   background-color: transparent;
 
-      /* color=primary and variant=text*/
+    /* color=primary and variant=text*/
     ${props =>
       props.$color === 'primary' &&
       css`
