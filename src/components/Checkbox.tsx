@@ -79,7 +79,6 @@ const Box = styled.span<CustomCheckboxProps>`
   ${props => props.size === checkboxSizes.medium && mediumSize}
   ${props => props.size === checkboxSizes.large && largeSize}
   ${props => props.color === 'secondary' && secondaryColor}
-
   &[disabled] {
     opacity: var(--opacity-disabled);
   }
@@ -95,7 +94,6 @@ const Box = styled.span<CustomCheckboxProps>`
     transform: ${p => (p.checked ? 'none' : 'scale(.35)')};
     transition: transform 100ms, opacity 100ms;
     width: var(--inner-size);
-
     &[disabled] {
       opacity: var(--opacity-disabled);
     }
